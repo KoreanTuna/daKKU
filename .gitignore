@@ -1,0 +1,7 @@
+node_modules/
+.vscode/
+goorm*
+package*.json
+docs/
+.git/
+.DS_Store

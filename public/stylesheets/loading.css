@@ -44,10 +44,12 @@ body {
   color: #ffffff;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-family: 'Jalnan';
 }
 #guideText .semiTitle {
   color: #ffffff;
   font-size: 20px;
   margin-bottom: 40px;
+  font-family: 'Pretendard-Regular';
 }

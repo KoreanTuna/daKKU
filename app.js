@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 //지정파일들 접근경로 설정
 app.use('/', loadingRouter)
 app.use('/p', postRouter)
-app.use('/onboarding1', onboarding1Router)
+app.use('/onboarding1', onbording1Router)
 
 // error handler
 

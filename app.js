@@ -7,6 +7,8 @@ var logger = require('morgan')
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let loginRouter = require('./routes/login.js')
+let postRouter = require('./routes/post.js')
+
 var app = express()
 
 // view engine setup
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', loadingRouter)
 app.use('/l', loginRouter)
 
+app.use('/p', postRouter)
 
 // error handler
 

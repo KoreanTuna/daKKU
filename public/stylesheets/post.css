@@ -1,0 +1,8 @@
+/* 위에서 추가한 코드 */
+#editor {
+  border: none;
+}
+
+.ql-toolbar {
+  border: none !important;
+}

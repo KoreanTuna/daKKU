@@ -6,6 +6,7 @@ var logger = require('morgan')
 
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
+let userizing3Router = require('./routes/userizing3.js')
 let loginRouter = require('./routes/login.js')
 let postRouter = require('./routes/post.js')
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //지정파일들 접근경로 설정
 app.use('/', loadingRouter)
+app.use('/u3', userizing3Router)
 app.use('/l', loginRouter)
 
 app.use('/p', postRouter)

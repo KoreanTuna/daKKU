@@ -1,0 +1,45 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    
+  }
+
+  a {
+    background-color: #533CDE;
+  }
+  .button {
+    background-color: #533CDE;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .button.selected {
+    background-color: white;
+    color: #533CDE;
+  }
+  
+  .confirm-button {
+    background-color: white;
+    color: #ff533CDE;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  input[type="radio"]:checked + span {
+    background-color: white;
+    color: #533cde
+  }
+  
+  
+  
+  
+  
+  
+

@@ -9,6 +9,7 @@ let loadingRouter = require('./routes/loading.js')
 let userizing3Router = require('./routes/userizing3.js')
 let loginRouter = require('./routes/login.js')
 let postRouter = require('./routes/post.js')
+let onbording1Router = require('./routes/onboarding1.js')
 
 var app = express()
 
@@ -31,6 +32,7 @@ app.use('/u3', userizing3Router)
 app.use('/l', loginRouter)
 
 app.use('/p', postRouter)
+app.use('/onboarding1', onbording1Router)
 
 // error handler
 

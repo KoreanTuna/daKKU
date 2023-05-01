@@ -5,6 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #533cde;
+  font-family: 'Pretendard-Regular';
   }
 
   /**//* circle bar 만들기*/
@@ -101,6 +102,7 @@ body {
 
 
   .button {
+    font-family: 'Jalnan';
     background-color: white;
     min-width: 180px;
     display: flex;
@@ -118,10 +120,11 @@ body {
   }
   
   .confirm-button {
+    font-family: 'Pretendard-Bold';
     background-color: white;
     color: #533CDE;
-    padding: 10px;
+    padding: 20%;
     border-radius: 10px;
-
+    font-size: larger;
     margin: 30% 0% 0% 0%;
   }

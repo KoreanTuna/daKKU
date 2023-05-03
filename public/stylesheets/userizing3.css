@@ -95,8 +95,8 @@ body {
 
   .buttons{
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
+    justify-content: space-evenly;
     height: 100%;
   }
 
@@ -123,7 +123,7 @@ body {
     font-family: 'Pretendard-Bold';
     background-color: white;
     color: #533CDE;
-    padding: 20%;
+    padding: 3%;
     border-radius: 10px;
     font-size: larger;
     margin: 30% 0% 0% 0%;

@@ -4,23 +4,70 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loading Progress Bar</title>
+    <title>Userizing3</title>
     <link rel="stylesheet" href="/stylesheets/textStyle.css" />
-    <link rel="stylesheet" href="/stylesheets/loading.css" />
+    <link rel="stylesheet" href="/stylesheets/userizing3.css" />
 </head>
 
 <body>
-    <div >
-        <progress></progress>
-        <p>이 문장은 흰색으로 표시됩니다.</p>
-    </div>
+    <div class="whole">
+        <div class="step-progress">
+            <div class="step-item">
+                <div class="step-circle selected"><h4>1<h4></div>
+                <div class="step-description selected"><h4>기본 정보</h4></div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-item">
+                <div class="step-circle"><h4>2</h4></div>
+                <div class="step-description"><h4>다음 스탭</h4></div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-item">
+                <div class="step-circle"><h4>3</h4></div>
+                <div class="step-description"><h4>다음 스탭</h4></div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-item">
+                <div class="step-circle"><h4>4</h4></div>
+                <div class="step-description"><h4>마지막 스탭</h4></div>
+            </div>
+        </div>
+
+        <div class="sentence">
+        <h3>다꾸OS에서 글을 작성하는 방법을 알아볼까요?</h3>
+        </div>
+    
+    
     <div class="wrapper">
         <div class="buttons">
-            <button id="tutorial" class="button"><img src="손가락 이미지 경로" alt="손가락 이미지"><span>튜토리얼 보기</span></button>
-            <button id="skip" class="button"><img src="손가락 이미지 경로" alt="손가락 이미지"><span>스킵하기</span></button>
-            <button id="confirm" class="confirm-button"><input type="radio" name="confirm"><span>확인</span></button>
-          </div>
+            <div class="tutoral_button">
+                <!--!사진 안 뜨는 거 일단 넘어가기-->
+                <button id="tutorial" class="button"><img src="/images/OK.png" alt="OK 이미지"><span>튜토리얼 보기</span></button>
+            </div>
+            <div class="skip_button">
+                <button id="skip" class="button"><img src="/images/Pistol.png" alt="손가락 이미지"><span>스킵하기</span></button>
+            </div>
+        </div>
+        <button id="confirm" class="confirm-button"><span>확인</span></button>
+        
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#tutorial").click(function() {
+          $(this).addClass("selected");
+          $("#skip").removeClass("selected");
+        });
+
+        $("#skip").click(function() {
+          $(this).addClass("selected");
+          $("#tutorial").removeClass("selected");
+        });
+      });
+    </script>
+    
+    
 </body>
 
 </html>

@@ -1,0 +1,200 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #533cde;
+  }
+
+  .block {
+    border-radius: 8px;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    margin-left: 6px;
+    top: 50%;
+    transform: translateY(-50%); /* 중앙 정렬을 위한 위치 조정 */
+  }
+  
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #guideText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #guideText .title {
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    font-family: 'Jalnan';
+  }
+  #guideText .title {
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-family: 'Jalnan';
+  }
+  
+  #guideText .semiTitle {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 40px;
+    font-family: 'Pretendard-Regular';
+  }
+
+/*naver*/
+.naver-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(14, 195, 2);
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .naver-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/naver.png");
+    margin-right: 20px;
+  }
+  
+  .naver-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+/*kakao*/
+.kakao-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(255, 234, 0);
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .kakao-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/kakao.png");
+    margin-right: 20px;
+  }
+  
+  .kakao-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+
+/*apple*/
+.apple-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .apple-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/apple.png");
+    margin-right: 20px;
+  }
+  
+  .apple-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+/*google*/
+  .google-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .google-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/google.png");
+    margin-right: 20px;
+  }
+  
+  .google-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+  .do-login {
+    text-decoration: underline;
+    color: white;
+  }
+
+
+
+  

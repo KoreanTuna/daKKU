@@ -1,3 +1,5 @@
+
+
 let tags = [];
 function addTag() {
     console.log("hi");;
@@ -26,3 +28,15 @@ function addTag() {
     }
 }
         
+
+async function savePost(title, content) {
+    var postData = {
+        title: title,
+        content: content,
+        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      };
+    console.log("save post");
+    const document = collectionPost.doc();
+    await document.set(postData);
+
+}

@@ -10,7 +10,7 @@ const db = getFirestore();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('userizing3.ejs', {})
+  res.render('tutorial.ejs', {})
 })
 
 module.exports = router

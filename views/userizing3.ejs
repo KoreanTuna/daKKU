@@ -53,15 +53,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function() {
+        var selectedButton = "";
         $("#tutorial").click(function() {
           $(this).addClass("selected");
           $("#skip").removeClass("selected");
+          selectedButton = "t";
         });
 
         $("#skip").click(function() {
           $(this).addClass("selected");
           $("#tutorial").removeClass("selected");
+          selectedButton = "u4";
         });
+
+        $("#confirm").click(function() {
+          if (selectedButton) {
+            window.location.href = selectedButton;
+            //window.location.href = "t?selectedButton=" + selectedButton;
+          }
+        });
+
       });
     </script>
     

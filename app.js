@@ -4,6 +4,13 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
+const admin = require('firebase-admin');
+const { initializeApp } = require("firebase-admin/app");
+const serviceAccount = require('./routes/security/config.json').firebase_admin;
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let userizing3Router = require('./routes/userizing3.js')
@@ -11,8 +18,10 @@ let userizing4Router = require('./routes/userizing4.js')
 let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
-let onbording1Router = require('./routes/onboarding1.js')
+let onboarding1Router = require('./routes/onboarding1.js')
+let onboarding2Router = require('./routes/onboarding2.js')
 let homepageRouter = require('./routes/homepage.js')
+
 
 
 var app = express()
@@ -37,8 +46,10 @@ app.use('/u4', userizing4Router)
 app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
-app.use('/onboarding1', onbording1Router)
+app.use('/onboarding1', onboarding1Router)
+app.use('/onboarding2', onboarding2Router)
 app.use('/homepage', homepageRouter)
+
 
 
 // error handler

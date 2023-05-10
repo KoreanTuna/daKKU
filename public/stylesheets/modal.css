@@ -17,8 +17,8 @@
     background-color: #fff;
     margin: 15% auto;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.293);
-    width: 1100px;
-    height: 700px;
+    width: 1040px;
+    height: 720px;
     position: absolute;
     top: 0;
     left: 0;
@@ -38,15 +38,15 @@
     color: #fff;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     cursor:grab;
   }
   
   .custom-header h1 {
     margin: 0;
     font-family: "Jalnan";
-    font-size: 28px;
+    font-size: 24px;
   }
   
   .close-btn {
@@ -56,23 +56,28 @@
 
   .modal-footer {
     /* background-color: #f2f2f2; */
-    padding: 40px;
+
+    margin: 40px;
     text-align: center;
     display: flex;
     justify-content: space-between;
   }
-  
+  .hash-tags-container{
+    width: 600px;
+    text-align: left;
+
+  }
   #hashTags:focus {
     outline: none;
   }
   #hashTags {
-    width: 100%;
+    display: inline;
     box-sizing: border-box;
-    padding: 5px;
-    font-size: 14px;
+    font-size: 18px;
     border: none;
     border-bottom: 1px solid #ccc;
     margin-top: 10px;
+    padding-bottom: 6px;
   }
   
   #tagList {
@@ -80,6 +85,20 @@
     flex-wrap: wrap;
     align-items: center;
     margin-top: 10px;
+  }
+  #addTagBtn{
+    font-family: "Pretendard-Meidum";
+    display: inline-block;
+    background-color: #fff;
+    color: #533CDE;
+    text-decoration: none;
+    padding: 4px 8px;
+    margin-left: 12px;
+    border-radius: 4px;
+    border: 0px;
+    text-align: center;
+    font-size: 16px;
+
   }
   .tag {
     background-color: #f2f2f2;
@@ -101,6 +120,7 @@
     cursor: pointer;
   }
 
+
   
   #saveBtn{
     width: 140px;
@@ -111,3 +131,4 @@
     font-family: "Pretendard-Bold";
     color: #fff;
   }
+

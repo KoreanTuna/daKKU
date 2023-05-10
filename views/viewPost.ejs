@@ -7,7 +7,11 @@
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
     <link rel="stylesheet" href="/stylesheets/post.css" />
     <link rel="stylesheet" href="/stylesheets/modal.css" />
+
     <script>
+        content = JSON.parse(('<%- JSON.stringify(doc)%>').replace(/[\r\n]/gm, ''));
+        title = '<%=title%>';
+
         document.addEventListener("keydown", closeModalOnEsc);
         function closeModalOnEsc(e) {
             e = e || window.event;
@@ -16,7 +20,6 @@
                 closeModal();
             }
         }
-
         function openModal() {
             const modal = document.getElementById('myModal');
             const modalContent = document.getElementById('modalContent');
@@ -64,14 +67,11 @@
                 document.onmousemove = null;
             }
         }
-
-
     </script>
 </head>
 
-<body>
-    <button onclick="openModal()" style="background-color: #fff; outline: none;border-radius: 2px; padding: 12px;">모달
-        열기</button>
+<body onload="setContent()">
+    <button onclick="openModal()">모달 열기</button>
     <div id="myModal" class="modal">
         <div id="modalContent" class="modal-content">
             <div class="custom-header">
@@ -96,7 +96,7 @@
                 <div id="editor"></div>
             </div>
 
-            <div class="modal-footer">
+            <div class=" modal-footer">
                 <div class="hash-tags-container">
                     <input id="hashTags" type="text" placeholder="해시태그를 입력하세요." />
                     <button id="addTagBtn" onclick="addTag()">추가</button>
@@ -107,15 +107,17 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 
+
+
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="/script/post.js"></script>
-
     <script>
-        var quill = new Quill("#editor", {
+        // console.log("ss");
+        // console.log('<%=doc%>');
+        const quill = new Quill("#editor", {
             placeholder: "내용을 입력해 주세요!",
             theme: "snow",
             modules: {
@@ -124,24 +126,12 @@
                 },
             },
         });
-        const saveButton = document.getElementById("saveBtn");
-        saveButton.addEventListener("click", async () => {
-
-            var data = {
-                title: "title",
-                content: quill.getContents(),
-                // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            };
-            const response = await fetch("/p/save_post", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-
-
-        });
+        function setContent() {
+            quill.setContents(content);
+            let box = document.getElementById("postTitle");
+            box.placeholder = "";
+            box.value = title;
+        }
     </script>
     <script>
         dragElement(document.getElementById("modalContent"));
@@ -149,3 +139,19 @@
 </body>
 
 </html>
+
+<!-- [{"insert":"router.get("/view", async function (req, res, next) {"},
+{"insert":"","attributes":{"code-block":true}},
+{"insert":" const post = await collectionPost.get().;"},
+{"insert":"","attributes":{"code-block":true}},
+{"insert":" res.render("viewPost.ejs", {"},
+{"insert":"","attributes":{"code-block":true}},
+{"insert":" "},
+{"insert":"","attributes":{"code-block":true}},
+{"insert":"});"},{"insert":"","attributes":{"code-block":true}},
+{"insert":"});"},{"insert":"","attributes":{"code-block":true}},
+{"insert":"반갑습니다 저는"},{"insert":" 송민우","attributes":{"bold":true}},
+{"insert":"입니다."}] -->
+
+
+﻿

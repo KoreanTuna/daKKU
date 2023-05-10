@@ -20,6 +20,8 @@ let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onboarding1Router = require('./routes/onboarding1.js')
 let onboarding2Router = require('./routes/onboarding2.js')
+let homepageRouter = require('./routes/homepage.js')
+
 
 
 var app = express()
@@ -46,6 +48,8 @@ app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onboarding1Router)
 app.use('/onboarding2', onboarding2Router)
+app.use('/homepage', homepageRouter)
+
 
 
 // error handler

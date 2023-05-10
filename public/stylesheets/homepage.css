@@ -1,0 +1,111 @@
+/*body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #533cde;
+  }*/
+
+  body {
+    background-image: url("../images/hpBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center -2%;
+    background-color: #6E2BDD;
+  }
+
+
+
+/*상단바*/
+  .upside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #a294e5;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .left {
+    margin-left: 10px;
+    font-size: 20px;
+    font-size: 11pt;
+    font-weight: bold; 
+  }
+  
+  .right {
+    margin-right: 3%;
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    font-size: 11pt;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+
+  .right div {
+    margin-right: 15px;
+  }
+
+
+  /*폴더 이미지*/
+
+  .foldercontainer {
+    display: flex;
+    flex-direction: column;
+    position: center -2%;
+    margin-top: 80px;
+  }
+  
+  .folderimage-container {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25vh;
+    justify-content: center;
+    margin-left: 20px;
+    margin-bottom: -35px;
+  }
+  
+  .folderimage {
+    background-image: url("../images/folder_carrot.png");
+    background-size: 100px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+  }
+  
+  .foldertext {
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    width: 100%; 
+    height: 50%;
+  }
+
+  .folderimage_plus {
+    background-image: url("../images/folder_icon.png");
+    background-size: 100px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+    margin-top: -55px;
+  }
+  
+  
+  
+
+

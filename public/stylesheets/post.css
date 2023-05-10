@@ -8,7 +8,9 @@ body{
   font-size: 17px;
   font-family: 'Pretendard-Regular';
   color: #282828;
-  height: 320px;
+  /* height: 320px; */
+  height: 340px;
+
   line-height: 1.4;
   background-color: rgba(240, 240, 240, 0.514);
 }
@@ -51,11 +53,6 @@ body{
 }
 #postTitle::placeholder{
   font-family: 'Pretendard-Regular';
-
 }
 
 
-.hash-tags-container{
-  margin-left: 40px;
-  width: 30%;
-}

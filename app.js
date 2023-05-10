@@ -4,6 +4,13 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 
+const admin = require('firebase-admin');
+const { initializeApp } = require("firebase-admin/app");
+const serviceAccount = require('./routes/security/config.json').firebase_admin;
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let userizing3Router = require('./routes/userizing3.js')

@@ -18,7 +18,9 @@ let userizing4Router = require('./routes/userizing4.js')
 let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
-let onbording1Router = require('./routes/onboarding1.js')
+let onboarding1Router = require('./routes/onboarding1.js')
+let onboarding2Router = require('./routes/onboarding2.js')
+
 
 var app = express()
 
@@ -42,7 +44,9 @@ app.use('/u4', userizing4Router)
 app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
-app.use('/onboarding1', onbording1Router)
+app.use('/onboarding1', onboarding1Router)
+app.use('/onboarding2', onboarding2Router)
+
 
 // error handler
 

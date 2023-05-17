@@ -25,7 +25,7 @@ let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
-//let messageRouter = require('./routes/message.js')
+let messageRouter = require('./routes/message.js')
 
 
 var app = express()
@@ -52,7 +52,7 @@ app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
-//app.use('/message', messageRouter)
+app.use('/message', messageRouter)
 
 
 

@@ -26,6 +26,8 @@ let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
 let messageRouter = require('./routes/message.js')
+let message1Router = require('./routes/message1.js')
+let message2Router = require('./routes/message2.js')
 
 
 var app = express()
@@ -53,8 +55,8 @@ app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
 app.use('/message', messageRouter)
-
-
+app.use('/message1', message1Router)
+app.use('/message2', message2Router)
 
 // error handler
 

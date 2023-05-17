@@ -1,0 +1,81 @@
+.home {
+    background-color: blueviolet;
+}
+
+#date-time-container {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  span {
+    margin: 0 10px;
+  }
+
+  .naver-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(14, 195, 2);
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .naver-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/naver.png");
+    margin-right: 20px;
+  }
+  
+  .naver-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+/*kakao*/
+.kakao-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: 23px;
+    padding: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(255, 234, 0);
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+  
+  .kakao-logo {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/kakao.png");
+    margin-right: 20px;
+  }
+  
+  .kakao-content {
+    flex: 1;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }

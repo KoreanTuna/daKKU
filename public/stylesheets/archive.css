@@ -1,0 +1,101 @@
+/* 위에서 추가한 코드 */
+body{
+    margin: 0;
+    background-color: #533CDE;
+  }
+  #editor {
+    border: none;
+    font-size: 17px;
+    font-family: 'Pretendard-Regular';
+    color: #282828;
+    /* height: 320px; */
+    height: 340px;
+  
+    line-height: 1.4;
+    background-color: rgba(240, 240, 240, 0.514);
+  }
+  .center {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .grid {
+    width: calc(100% / 10);
+    height: calc(100vh / 8);
+  }
+
+  .grid h4 {
+    margin: 0%;
+    padding: 1% 0%;
+    text-align: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .folder {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 60%;
+    min-height: 60%;
+  }
+
+  .file {
+    padding: 2%;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .file h4{
+    margin: 0%;
+    padding: 1% 0%;
+    text-align: center;
+  }
+  
+  .ql-toolbar {
+    margin-top: 12px;
+    border: none !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #toolbar{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .quillIcon{
+    margin:12px !important;
+    width: 32px !important;
+    height: 32px !important;
+  
+    /* width: 28px !important; */
+  }
+  #modal-quill{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  #postTitle{
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    width: 100%;
+    font-size: 28px;
+    font-family: 'Pretendard-SemiBold';
+    /* width: 80%; */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #B0B0B0;
+  }
+  #postTitle::placeholder{
+    font-family: 'Pretendard-Regular';
+  }
+  
+  
+  

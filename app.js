@@ -9,29 +9,32 @@ const admin = require('firebase-admin');
 const { initializeApp } = require("firebase-admin/app");
 const serviceAccount = require('./routes/security/config.json').firebase_admin;
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket : "gs://webservice-97784.appspot.com",
+  credential: admin.credential.cert(serviceAccount)
 });
+
+//firebase storage
+
 
 
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let tutorialRouter = require('./routes/tutorial.js')
-let testRouter = require('./routes/test.js')
-
 let userizing3Router = require('./routes/userizing3.js')
 let userizing4Router = require('./routes/userizing4.js')
 let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
-let onbording2Router = require('./routes/onboarding2.js')
-let profileRouter = require('./routes/profile.js')
 let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
 
+<<<<<<< HEAD
+//기타 기능
+let archive1Router = require('./routes/archive1.js')
 
+=======
+>>>>>>> e32c984f7d325edac9448b3cbfe740eb0ecca355
 
 var app = express()
 
@@ -41,9 +44,6 @@ app.set('views', path.join(__dirname, 'views'))
 //Jade 삭제하고 ejs 랜더링을 위해 추가된 코드
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs')
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -55,19 +55,20 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', loadingRouter)
 app.use('/t', tutorialRouter)
 app.use('/u3', userizing3Router)
-app.use('/test', testRouter)
 app.use('/u4', userizing4Router)
 app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
-app.use('/onboarding2', onbording2Router)
-app.use('/profile', profileRouter)
+<<<<<<< HEAD
 
 // 기타 기능 연습
+app.use('/ar1', archive1Router)
+=======
 app.use('/message', messageRouter)
 app.use('/message1', message1Router)
 app.use('/message2', message2Router)
+>>>>>>> e32c984f7d325edac9448b3cbfe740eb0ecca355
 
 // error handler
 

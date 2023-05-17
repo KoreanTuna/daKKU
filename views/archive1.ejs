@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Archive 열기</title>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/archive.css" />
+    <link rel="stylesheet" href="/stylesheets/archive_modal.css" />
+    <script>
+        content = JSON.parse(('<%- JSON.stringify(content)%>').replace(/[\r\n]/gm, ''));
+        //content = '<%= JSON.stringify(content) %>';
+        title = '<%=title%>';
+        // //나중에 파이어 베이스에서 받아올 때
+        // var heartCount = 0;
+        // var replyCount = 0;
+
+        //console.log('이건 content입니다: ' + content);
+        // console.log('이건 title입니다: ' + title);
+        
+        document.addEventListener("keydown", closeModalOnEsc);
+        function closeModalOnEsc(e) {
+            e = e || window.event;
+            const modal = document.getElementById('myModal');
+            if (e.key === "Escape" && modal.style.display === "block") {
+                closeModal();
+            }
+        }
+
+
+
+        function openModal() {
+            const modal = document.getElementById('myModal');
+            const modalContent = document.getElementById('modalContent');
+            modal.style.display = 'block';
+
+            // 화면 중앙에 모달창 배치
+            modalContent.style.position = 'fixed';
+            modalContent.style.top = '50%';
+            modalContent.style.left = '50%';
+            modalContent.style.transform = 'translate(-50%, -90%)';
+
+        }
+        
+        function openNewFolderModal() {
+            const modal = document.getElementById('myNewFloderModal');
+            const modalContent = document.getElementById('newFolderModalContent');
+            modal.style.display = 'block';
+
+            // // 화면 중앙에 모달창 배치
+            // modalContent.style.position = 'fixed';
+            // modalContent.style.top = '50%';
+            // modalContent.style.left = '50%';
+            // modalContent.style.transform = 'translate(-50%, -90%)';
+
+        }
+
+        function closeNewFolderModal() {
+            document.getElementById('myNewFloderModal').style.display = 'none';
+        }
+
+        function openFile(e){
+                e.preventDefault();
+
+                //console.log("좀 보여줘 봐");
+                //console.log(document.getElementById('file_icon'));
+                //파일 열기
+                const file = document.getElementById('myFile');
+                const fileContent = document.getElementById('modal-file-content');
+                const fileIcon = document.getElementById('fileIcon');
+                console.log("fileIcon 클릭");
+                file.style.display = 'block';
+                fileContent.style.display = 'block';
+                fileIcon.style.display = 'none';
+
+            }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        function dragElement(elmnt) {
+            const header = elmnt.querySelector(".custom-header");
+            let offsetX, offsetY;
+
+            header.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                offsetX = e.clientX - elmnt.getBoundingClientRect().left;
+                offsetY = e.clientY - elmnt.getBoundingClientRect().top;
+
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                elmnt.style.position = "fixed";
+                elmnt.style.left = (e.clientX - offsetX) + "px";
+                elmnt.style.top = (e.clientY - offsetY) + "px";
+                elmnt.style.margin = 0; // 이 부분을 추가해주세요
+                elmnt.style.transform = "none"; // 이 부분을 추가해주세요
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="setContent()">
+    <div style="flex-direction: column; padding: 1%;" class="grid" >
+    <img src="/images/folder_carrot.png" onclick="openModal()" class="center folder" style="text-align: center;"><h4>Archive 열기</h4><img>
+    </div>
+    <div id="folderContainer" style="flex-direction: column; padding: 1%;" class=" hidden"></div>
+    <div style="flex-direction: column; padding: 1%;" class="grid" >
+        <img src="/images/folder_icon.png" onclick="openNewFolderModal()" class="center folder" style="text-align: center;"><h4>New Archive Folder</h4><img>
+        </div>
+    <div id="myModal" class="modal">
+        <div id="modalContent" class="modal-content">
+            <div class="custom-header">
+                <h1>Archive</h1>
+                <span class="close-btn" onclick="closeModal();">&times;</span>
+            </div>
+
+            <div class="folder file" id="fileIcon" onclick="openFile(event);">
+                <img src="/images/file.gif" style="text-align: center;" class="file"><h4><%=title%></h4><img>
+            </div>
+
+            <!--! 파이어 베이스에서 전체 것들을 가져와야 한다 / 데이터 개수만큼 folder file 추가 -->
+            <!--! 지금은 제일 첫번 째 것만 가져온 것 -->
+            <!--! 태그는 firestore에 저장이 안 돼 있어서 못 불러 옴 -->
+            <div id="myFile">
+                <div id="modal-file-content" class="modal-file-content">
+                    <div id="modal-quill">
+                        <div id="toolbar" style="display: none;">
+                            <button class="ql-bold quillIcon"></button>
+                            <button class="ql-italic quillIcon"></button>
+                            <select class="ql-color quillIcon"></select>
+                            <button class="ql-underline quillIcon"></button>
+                            <button class="ql-strike quillIcon"></button>
+                            <button class="ql-header quillIcon"></button>
+                            <button class="ql-image quillIcon"></button>
+                            <button class="ql-code-block quillIcon"></button>
+                            <select class="ql-align quillIcon"></select>
+                        </div>
+                        <div>
+                            <h1 id="fileTitle"><%=title%></h1>
+                        </div>
+                        <div id="fileContent"><%=content%></div>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <div class="button_container">
+                            <button id="heartBtn" onclick="count_heart()"><img src="/images/heart.png"><img></button>
+                            <h4 class="count" id="heartCount">0</h4>
+                            <button id="replyBtn" onclick=""><img src="/images/reply.png"><img></button>
+                            <h4 class="count" id="replyCount">0</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myNewFloderModal" class="modal">
+        <div id="NewFloderModalContent" class="modal-content" style="background-color: lightsteelblue;">
+            <div class="custom-header">
+                <h1>New Archive Folder</h1>
+                <span class="close-btn" onclick="closeNewFolderModal();">&times;</span>
+            </div>
+            <div style="display: flex; flex-direction: row; padding:50px;">
+                <h1>이름:</h1>
+                <input id="newFolderName" type="text" class="newFolderBox">
+            </div>
+            <div style="display: flex; flex-direction: row; padding:50px;">
+                <h1>권한:</h1>
+                <select id="mySelect" onchange="handleSelectChange()" class="newFolderBox">
+                    <option value="option1"><img src="/images/human.png">송민우</option>
+                    <option value="option2"><img src="/images/human.png">장빛나</option>
+                    <option value="option3"><img src="/images/human.png">송연수</option>
+                    <option value="option2"><img src="/images/human.png">이주향</option>
+                    <option value="option3"><img src="/images/human.png">김영빈</option>
+                  </select>
+            </div>
+
+            <div class="Container">
+                <button id="newFolderBtn" onclick="addNewFolder()">저장</button>
+             </div>
+
+
+        </div>
+    </div>
+
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/script/archive1.js"></script>
+
+    <script>
+        
+
+        function setContent() {
+
+            var quill = new Quill("#fileContent", {
+            // placeholder: "내용을 입력해 주세요!",
+            theme: "snow",
+            modules: {
+                toolbar: {
+                    container: "#toolbar",
+                },
+            },
+        });
+            quill.setContents(content);
+        }
+
+         function count_heart() {
+            var num = document.getElementById("heartCount");
+            console.log("이건 heart: " + num);
+            num.innerText = Number(num.innerText) + 1;
+        }
+    
+    </script>
+    <script>
+        dragElement(document.getElementById("modalContent"));
+    </script>
+    <script>
+        function handleSelectChange() {
+        var selectedValue = document.getElementById("mySelect").value;
+            // 선택된 값에 대한 처리 로직을 작성합니다.
+            console.log("Selected value: " + selectedValue);
+        }
+
+        function handleListItemClick(item) {
+            // 선택된 항목에 대한 처리 로직을 작성합니다.
+            console.log("Clicked item: " + item);
+        }
+    </script>
+    <script>
+        function addNewFolder() {
+        // 새로운 폴더 이름 가져오기
+        var newFolderName = document.getElementById("newFolderName").value;
+
+        // 새로운 폴더를 생성하여 HTML에 추가
+        var newFolder = document.createElement("div");
+        newFolder.classList.add("grid");
+
+        var image = document.createElement("img");
+        image.src = "/images/folder_carrot.png";
+        image.onclick = openModal;
+        image.className = "center folder";
+        image.style = "text-align: center; color:white;";
+
+        var folderName = document.createElement("h4");
+        folderName.innerText = newFolderName;
+
+        newFolder.appendChild(image);
+        newFolder.appendChild(folderName);
+
+        var container = document.getElementById("folderContainer");
+        container.appendChild(newFolder);
+
+        // 입력 필드 초기화
+        document.getElementById("newFolderName").value = "";
+
+        // 창 끄기
+        document.getElementById("myNewFloderModal").style.display = 'none';
+        document.getElementById("folderContainer").style.display = 'block';
+        
+
+}
+    </script>
+
+
+</body>
+
+</html>

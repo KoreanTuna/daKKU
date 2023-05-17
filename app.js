@@ -25,8 +25,8 @@ let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
-
-let changeRouter = require('./routes/change_things.js')
+let onbording2Router = require('./routes/onboarding2.js')
+let profileRouter = require('./routes/profile.js')
 
 var app = express()
 
@@ -52,9 +52,10 @@ app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
+app.use('/onboarding2', onbording2Router)
+app.use('/profile', profileRouter)
 
 // 기타 기능 연습
-app.use('/change',changeRouter)
 
 // error handler
 

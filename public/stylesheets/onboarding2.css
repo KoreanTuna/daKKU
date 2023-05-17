@@ -94,6 +94,11 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  #boximg{
+    height: 50px;
+    width: 50px;
+  }
   
   #boxtext {
     color: white;

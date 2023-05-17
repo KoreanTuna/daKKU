@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>홈 화면 폴더</title>
+  <style>
+    .folder-icon {
+      width: 100px;
+      height: 100px;
+      background-image: url("/public/images/folder_carrot.png");
+      /* 아이콘 스타일 지정 */
+    }
+
+    .inner-folder-icon {
+      width: 80px;
+      height: 80px;
+      background-image: url("/public/images/농장주.png");
+      /* 내부 아이콘 스타일 지정 */
+    }
+
+    .folder-content {
+      display: none;
+      /* 폴더 내용 스타일 지정 */
+    }
+
+    .background-image {
+      width: 400px;
+      height: 300px;
+      background-image: url("기본 배경 이미지 URL");
+      /* 배경 이미지 스타일 지정 */
+    }
+
+    .color-label {
+      font-size: 20px;
+      margin-bottom: 10px;
+      /* 라벨 스타일 지정 */
+    }
+
+    .color-palette {
+      display: flex;
+      justify-content: center;
+      /* 컬러 팔레트 스타일 지정 */
+    }
+
+    .color-option {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      cursor: pointer;
+      /* 컬러 옵션 스타일 지정 */
+    }
+  </style>
+  <script>
+    function openFolder() {
+      var folderContent = document.getElementById("folder-content");
+      if (folderContent.style.display === "none") {
+        folderContent.style.display = "block";
+      } else {
+        folderContent.style.display = "none";
+      }
+    }
+
+    function openInnerFolder() {
+      var innerFolderContent = document.getElementById("inner-folder-content");
+      innerFolderContent.style.display = "block";
+    }
+    
+    function selectImage(event) {
+      var selectedImage = URL.createObjectURL(event.target.files[0]);
+      var backgroundImage = document.getElementById("background-image");
+      backgroundImage.style.backgroundImage = "url(" + selectedImage + ")";
+    }
+
+    function openColorFolder() {
+      var colorFolderContent = document.getElementById("color-folder-content");
+      colorFolderContent.style.display = "block";
+    }
+
+  </script>
+</head>
+<body>
+  <div class="folder-icon" onclick="openFolder()"></div>
+  <div id="folder-content" class="folder-content">
+    <!-- 폴더 내용 -->
+    <div class="inner-icon" onclick="openInnerFolder('icon1')"></div>
+    <div class="inner-icon" onclick="openInnerFolder('icon2')"></div>
+    <div class="inner-icon" onclick="openInnerFolder('icon3')"></div>
+    <div id="icon1" class="folder-content">
+      <!-- 배경 폴더 내용 -->
+      <div class="background-image" id="background-image"></div>
+      <input type="file" accept="image/*" onchange="selectImage(event)">
+      <button onclick="applyImage()">적용</button>
+    </div>
+    <div id="icon2" class="folder-content">
+      <!-- 폰트 폴더 내용 -->
+      <div class="color-label">color</div>
+      <div class="color-palette">
+        <div class="color-option" style="background-color: red"></div>
+        <div class="color-option" style="background-color: green"></div>
+        <div class="color-option" style="background-color: blue"></div>
+        <!-- 추가적인 컬러 옵션을 원하는대로 추가 -->
+      </div>
+    </div>
+    <div id="icon3" class="folder-content">
+      <!-- 배경 폴더 내용 -->
+    </div>
+    
+  </div>
+</body>
+</html>

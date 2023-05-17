@@ -9,16 +9,16 @@ const admin = require('firebase-admin');
 const { initializeApp } = require("firebase-admin/app");
 const serviceAccount = require('./routes/security/config.json').firebase_admin;
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket : "gs://webservice-97784.appspot.com",
 });
-
-//firebase storage
-
 
 
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let tutorialRouter = require('./routes/tutorial.js')
+let testRouter = require('./routes/test.js')
+
 let userizing3Router = require('./routes/userizing3.js')
 let userizing4Router = require('./routes/userizing4.js')
 let loginRouter = require('./routes/login')
@@ -26,7 +26,7 @@ let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
 
-let changeRouter = require('./routes/change_things.js')
+// let changeRouter = require('./routes/change_things.js')
 
 var app = express()
 
@@ -36,6 +36,9 @@ app.set('views', path.join(__dirname, 'views'))
 //Jade 삭제하고 ejs 랜더링을 위해 추가된 코드
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs')
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -47,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', loadingRouter)
 app.use('/t', tutorialRouter)
 app.use('/u3', userizing3Router)
+app.use('/test', testRouter)
 app.use('/u4', userizing4Router)
 app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
@@ -54,7 +58,7 @@ app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
 
 // 기타 기능 연습
-app.use('/change',changeRouter)
+// app.use('/change',changeRouter)
 
 // error handler
 

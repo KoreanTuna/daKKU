@@ -29,12 +29,12 @@ let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 //기타 기능
-let archive1Router = require('./routes/archive1.js')
+// let archive1Router = require('./routes/archive1.js')
 
-=======
->>>>>>> e32c984f7d325edac9448b3cbfe740eb0ecca355
+// =======
+// >>>>>>> e32c984f7d325edac9448b3cbfe740eb0ecca355
 
 var app = express()
 

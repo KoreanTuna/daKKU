@@ -4,14 +4,14 @@ const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestor
 const db = getFirestore();
 const collectionPost = db.collection('post');
 const admin = require('firebase-admin');
-const multer = require('multer');
-const bucket = admin.storage().bucket();
-const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-      fileSize: 5 * 1024 * 1024 // 최대 허용 크기 5MB
-  }
-});
+// const multer = require('multer');
+// const bucket = admin.storage().bucket();
+// const upload = multer({
+//   storage: multer.memoryStorage(),
+//   limits: {
+//       fileSize: 5 * 1024 * 1024 // 최대 허용 크기 5MB
+//   }
+// });
 router.post('/save_image', upload.array('images'), async (req, res) => {
   // const bucket = admin.storage().bucket();
 

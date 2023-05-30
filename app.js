@@ -23,14 +23,16 @@ let userizing3Router = require('./routes/userizing3.js')
 let userizing4Router = require('./routes/userizing4.js')
 let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
-let postRouter = require('./routes/post.js')
+// let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
 let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
+let customizeRouter = require('./routes/customize.js')
 
 //기타 기능
 let archive1Router = require('./routes/archive1.js')
+
 
 var app = express()
 
@@ -54,14 +56,18 @@ app.use('/u3', userizing3Router)
 app.use('/u4', userizing4Router)
 app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
-app.use('/p', postRouter)
-app.use('/onboarding1', onbording1Router)
+// app.use('/p', postRouter)
+// app.use('/onboarding1', onboarding1Router)
+// app.use('/onboarding2', onboarding2Router)
 
 // 기타 기능 연습
 app.use('/ar1', archive1Router)
+
 app.use('/message', messageRouter)
 app.use('/message1', message1Router)
 app.use('/message2', message2Router)
+
+app.use('/customize', customizeRouter)
 
 // error handler
 

@@ -25,9 +25,11 @@ let loginRouter = require('./routes/login')
 let welcomeRouter = require('./routes/welcome')
 let postRouter = require('./routes/post.js')
 let onbording1Router = require('./routes/onboarding1.js')
+let onbording2Router = require('./routes/onboarding2.js')
 let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
+let profileRouter = require('./routes/profile.js')
 
 //기타 기능
 let archive1Router = require('./routes/archive1.js')
@@ -56,6 +58,8 @@ app.use('/login', loginRouter)
 app.use('/welcome', welcomeRouter)
 app.use('/p', postRouter)
 app.use('/onboarding1', onbording1Router)
+app.use('/onboarding2', onbording2Router)
+app.use('/profile', profileRouter)
 
 // 기타 기능 연습
 app.use('/ar1', archive1Router)
@@ -66,9 +70,7 @@ app.use('/message2', message2Router)
 // error handler
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404))
-})
+
 
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development

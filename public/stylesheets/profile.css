@@ -1,5 +1,24 @@
 .home {
-    background-color: blueviolet;
+    background-color: rgb(202, 151, 234);
+    width: 100%;
+    height: 50px;
+    font-family: 'Pretendard-medium';
+    
+}
+
+.home-back{
+  color: white;
+  margin-top: 10px;
+}
+
+.home-deco{
+  color: white;
+  text-align: right;
+}
+
+.wave{
+  color: white;
+  text-align: right;
 }
 
 #date-time-container {
@@ -7,16 +26,72 @@
     text-align: center;
     margin-top: 50px;
   }
+
+  .whole{
+    margin: 3%;
+  }
+
+  profile-header{
+    display: flex;
+  }
+
+  .profile{
+    display: flex;
+    align-items: center;
+    color: rgb(202, 151, 234);
+    font-family: 'jalnan';
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
+
+  .profile-fix{
+    flex-grow: 1;
+    margin-left: auto;
+    display: flex;
+    text-align: right;
+    align-items: right;
+    font-family: 'Pretendard-medium';
+    color: rgb(145, 17, 192);
+  }
+
+  .name-text{
+    padding-right: 30px;
+
+  }
+
+  .email-text{
+    padding-right: 17px;
+  }
   
-  span {
-    margin: 0 10px;
+  .name-w{
+    margin: 10px;
+    font-family: 'Pretendard-medium';
+    font-size: 15px;
+  }
+
+  .email-w{
+    margin: 10px;
+    font-family: 'Pretendard-medium';
+    font-size: 15px;
+  }
+
+  .name{
+    border-radius: 7px;
+    width: 200px;
+    height: 30px;
+  }
+
+  .email{
+    border-radius: 7px;
+    width: 200px;
+    height: 30px;
   }
 
   .naver-container {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 370px;
+    max-width: 100px;
     height: 23px;
     padding: 12px;
     overflow: hidden;
@@ -24,6 +99,7 @@
     background-color: rgb(14, 195, 2);
     border-radius: 7px;
     margin-bottom: 10px;
+    font-family: 'Pretendard-light';
   }
   
   .naver-logo {
@@ -50,7 +126,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 370px;
+    max-width: 100px;
     height: 23px;
     padding: 12px;
     overflow: hidden;
@@ -58,6 +134,7 @@
     background-color: rgb(255, 234, 0);
     border-radius: 7px;
     margin-bottom: 10px;
+    font-family: 'Pretendard-light';
   }
   
   .kakao-logo {
@@ -78,4 +155,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
+  }
+
+  .radio{
+    margin-left: 10px;
+  }
+
+  hr{
+    margin: 2% 0px ;
+    color: gray;
   }

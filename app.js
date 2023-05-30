@@ -15,10 +15,6 @@ admin.initializeApp({
 
 //firebase storage
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fe6911418f2112a00bd5a0c79f905ed2f8b3829b
 // 사용할 파일들 지정
 let loadingRouter = require('./routes/loading.js')
 let tutorialRouter = require('./routes/tutorial.js')
@@ -35,12 +31,8 @@ let customizeRouter = require('./routes/customize.js')
 
 
 //기타 기능
-<<<<<<< HEAD
 let archive1Router = require("./routes/archive1.js");
 
-=======
-// let archive1Router = require('./routes/archive1.js')
->>>>>>> fe6911418f2112a00bd5a0c79f905ed2f8b3829b
 
 var app = express()
 

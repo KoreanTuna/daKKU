@@ -22,13 +22,16 @@ router.get("/", async function (req, res, next) {
   for(let i = 0; i<data.length; i++){
     let content = data[i].content.ops;
     let title = data[i].title;
+    
     //console.log(content);
     //console.log(title);
   }
 
   // var ref = await collectionPost.doc('dOQ1bTdSaAnWcDTdaY97').get();
   //es.render("archive1.ejs",{content : data[0].content.ops, title : data[0].title}, { async: true });
-  res.render("archive1.ejs",{content : data[0].content.ops, title : data[0].title});
+  //res.render("archive1.ejs",{content : data[0].content.ops, title : data[0].title});
+  console.log(data);
+  res.render("archive1.ejs",{data:data});
 });
 
 router.get("/view", async function (req, res, next) {

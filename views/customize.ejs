@@ -86,6 +86,63 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.classList.add("w3-light-grey");
         }
+
+        // 버튼누르면 배경화면 바뀌도록
+        function buttonImg1() {
+          document.getElementById("default").src = "/images/hpBackground.png"
+        }
+        function buttonImg2() {
+          document.getElementById("default").src = "/images/space.png"
+        }
+        function buttonImg3() {
+          document.getElementById("default").src = "/images/orange.png"
+        }
+        function buttonImg4() {
+          document.getElementById("default").src = "/images/Sweet House Festival 1.png"
+        }
+
+        // 버튼누르면 폴더스타일 지정했다는 표시
+        function change1() {
+          var select = document.getElementById("button-carrot");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-cyber");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-vacation");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change2() {
+          var select = document.getElementById("button-cyber");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-vacation");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change3() {
+          var select = document.getElementById("button-vacation");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-cyber");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change4() {
+          var select = document.getElementById("button-baker");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-cyber");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-vacation");
+          another3.style.border="1px solid gray"
+        }
+
   </script>
 </head>
 
@@ -110,30 +167,38 @@
         <div id="London" class="w3-container city">
          <h1 style="padding-left:30px; padding-top:20px;">Background</h1>
          <p style="padding-left:30px;">배경화면을 선택해주세요.</p>
-         <img src="/images/hpBackground.png" style="width: 400px; padding: 20px 30px 20px 30px;">
+         <img id="default" src="/images/hpBackground.png" style="width: 400px; padding: 20px 30px 20px 30px;">
 
          <div style="padding-left: 25px;">
          <div class="gallery">
           <a target="_blank">
-            <img src="/images/hpBackground.png" alt="Default" width="120" height="80">
+            <button onclick="buttonImg1()">
+              <img id="hp" src="/images/hpBackground.png" alt="Default" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/space.png" alt="Space" width="120" height="80">
+            <button onclick="buttonImg2()">
+              <img id="space" src="/images/space.png" alt="Space" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/orange.png" alt="Orange Man" width="120" height="80">
+            <button onclick="buttonImg3()">
+              <img id="orange" src="/images/orange.png" alt="Orange Man" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/Sweet House Festival 1.png" alt="Festival" width="120" height="80">
+            <button onclick="buttonImg4()">
+              <img id="sweet" src="/images/Sweet House Festival 1.png" alt="Festival" width="120" height="80">
+            </button>
           </a>
         </div>
 
@@ -173,16 +238,16 @@
          </div>
          <h2 style="padding-left:30px; color:rgb(116, 116, 116);">Icon</h2><br>
          <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
-          <button class="grid-item">
+          <button class="grid-item" id="button-carrot" onclick="change1()">
             <img src="/images/농장주.png">
           </button>
-          <button class="grid-item">
+          <button class="grid-item" id="button-cyber" onclick="change2()">
             <img src="/images/사이버.png">
           </button>
-          <button class="grid-item">
+          <button class="grid-item" id="button-vacation" onclick="change3()">
             <img src="/images/방학.png">
           </button>  
-          <button class="grid-item">
+          <button class="grid-item" id="button-baker" onclick="change4()">
             <img src="/images/베이커.png">
           </button>
         </div>

@@ -66,7 +66,7 @@ app.use("/ar1", archive1Router);
 app.use("/message", messageRouter);
 app.use("/message1", message1Router);
 app.use("/message2", message2Router);
-app.use("/homepage", homepageRouter);
+// app.use("/homepage", homepageRouter);
 
 app.use("/customize", customizeRouter);
 

@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
   res.render('profile.ejs', {})
 })
 
-function updateTime() {
+/*function updateTime() {
   var date = new Date();
   
   var daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
@@ -30,6 +30,6 @@ function updateTime() {
 }
 
 setInterval(updateTime, 1000);
-
+*/
 
 module.exports = router

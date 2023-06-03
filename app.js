@@ -54,11 +54,11 @@ app.use("/", loadingRouter);
 app.use("/t", tutorialRouter);
 app.use("/u3", userizing3Router);
 app.use("/u4", userizing4Router);
-app.use("/test", testRouter);
+// app.use("/test", testRouter);
 
 app.use("/login", loginRouter);
 app.use("/welcome", welcomeRouter);
-app.use("/p", postRouter);
+// app.use("/p", postRouter);
 
 app.use("/onboarding1", onbording1Router);
 

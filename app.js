@@ -16,21 +16,22 @@ admin.initializeApp({
 //firebase storage
 
 // 사용할 파일들 지정
-let loadingRouter = require("./routes/loading.js");
-let tutorialRouter = require("./routes/tutorial.js");
-let userizing3Router = require("./routes/userizing3.js");
-let userizing4Router = require("./routes/userizing4.js");
-let loginRouter = require("./routes/login");
-let welcomeRouter = require("./routes/welcome");
-let postRouter = require("./routes/post.js");
-
-let onbording1Router = require("./routes/onboarding1.js");
+let loadingRouter = require('./routes/loading.js')
+let tutorialRouter = require('./routes/tutorial.js')
+let userizing3Router = require('./routes/userizing3.js')
+let userizing4Router = require('./routes/userizing4.js')
+let loginRouter = require('./routes/login')
+let welcomeRouter = require('./routes/welcome')
+let onbording1Router = require('./routes/onboarding1.js')
 let onbording2Router = require("./routes/onboarding2.js");
 
-let messageRouter = require("./routes/message.js");
-let message1Router = require("./routes/message1.js");
-let message2Router = require("./routes/message2.js");
-let customizeRouter = require("./routes/customize.js");
+let messageRouter = require('./routes/message.js')
+let message1Router = require('./routes/message1.js')
+let message2Router = require('./routes/message2.js')
+let customizeRouter = require('./routes/customize.js')
+
+
+
 
 //기타 기능
 let archive1Router = require("./routes/archive1.js");
@@ -55,11 +56,10 @@ app.use("/", loadingRouter);
 app.use("/t", tutorialRouter);
 app.use("/u3", userizing3Router);
 app.use("/u4", userizing4Router);
-// app.use("/test", testRouter);
 
 app.use("/login", loginRouter);
 app.use("/welcome", welcomeRouter);
-// app.use("/p", postRouter);
+
 
 app.use("/onboarding1", onbording1Router);
 app.use("/onboarding2", onbording2Router);
@@ -69,6 +69,7 @@ app.use("/ar1", archive1Router);
 app.use("/message", messageRouter);
 app.use("/message1", message1Router);
 app.use("/message2", message2Router);
+app.use("/homepage", homepageRouter);
 
 app.use("/customize", customizeRouter);
 

@@ -1,0 +1,55 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #533cde;
+}
+
+.progress-container {
+  border-radius: 20px;
+  border: 2.5px solid #ffffff;
+  width: 100%;
+  max-width: 544px; /* 기존 너비에서 패딩을 포함한 너비로 변경 */
+  height: 48px; /* 기존 높이에서 패딩을 포함한 높이로 변경 */
+  padding: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.block {
+  border-radius: 8px;
+  height: 50px;
+  position: absolute;
+  width: 50px;
+  margin-left: 6px;
+  top: 50%;
+  transform: translateY(-50%); /* 중앙 정렬을 위한 위치 조정 */
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#guideText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#guideText .title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-family: 'Jalnan';
+}
+#guideText .semiTitle {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-family: 'Pretendard-Regular';
+}

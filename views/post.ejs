@@ -183,8 +183,6 @@
       const saveButton = document.getElementById("saveBtn");
       const postTitle = document.getElementById("postTitle");
       saveButton.addEventListener("click", async () => {
-        console.log("hi");
-
         let content = quill.getContents();
 
         let tag = document.getElementById("tagList");
@@ -201,6 +199,7 @@
           body: JSON.stringify(data),
         });
         tempImages = [];
+        alert("post save");
       });
     </script>
     <script>

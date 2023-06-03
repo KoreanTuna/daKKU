@@ -16,10 +16,9 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024,
   },
 });
+// const multer = require("multer");
 
 router.post("/save_image", upload.array("images"), async (req, res) => {
-  const bucket = admin.storage().bucket();
-
   try {
     let urls = [];
     for (const file of req.files) {
@@ -58,6 +57,12 @@ router.get("/", function (req, res, next) {
 
 router.post("/save_post", (req, res) => {
   console.log("save");
+  // var upload = multer({
+  //   storage: multer.memoryStorage(),
+  //   limits: {
+  //     fileSize: 5 * 1024 * 1024, // 제한 사이즈 설정
+  //   },
+  // });
   const data = {
     title: req.body.title,
     content: req.body.content,

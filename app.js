@@ -59,7 +59,7 @@ app.use("/u4", userizing4Router);
 
 app.use("/login", loginRouter);
 app.use("/welcome", welcomeRouter);
-app.use("/p", postRouter);
+// app.use("/p", postRouter);
 
 app.use("/onboarding1", onbording1Router);
 app.use("/onboarding2", onbording2Router);

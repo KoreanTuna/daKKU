@@ -30,6 +30,7 @@ let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
 let profileRouter = require('./routes/profile.js')
+let guestbookRouter = require('./routes/guestbook.js')
 
 //기타 기능
 let archive1Router = require('./routes/archive1.js')
@@ -66,6 +67,7 @@ app.use('/ar1', archive1Router)
 app.use('/message', messageRouter)
 app.use('/message1', message1Router)
 app.use('/message2', message2Router)
+app.use('/guestbook', guestbookRouter)
 
 // error handler
 

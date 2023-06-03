@@ -1,7 +1,0 @@
-node_modules/
-.vscode/
-goorm*
-package*.json
-docs/
-.DS_Store
-

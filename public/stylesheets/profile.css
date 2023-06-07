@@ -68,29 +68,29 @@ strong {
     margin: 3%;
   }
 
-  .profile-header{
- 
-  }
-
-  .profile{
+  .profile-header {
+    display: flex;
+    justify-content: space-between; /* 좌우 정렬 */
     align-items: center;
+  }
+  
+  .profile {
     color: rgb(202, 151, 234);
     font-family: 'jalnan';
     font-size: 25px;
-    padding: 50px 0px 5px;
-    display: flex;
+    padding-top: 50px;
+    padding-bottom: 10px;
   }
-
-  .profile-fix{
-    flex-grow: 1;
+  
+  .profile-fix {
     display: flex;
-    text-align: right;
-    align-items: right;
-    margin-right: 3%;
+    align-items: center;
     font-family: 'Pretendard-medium';
     color: rgb(145, 17, 192);
+    padding-top: 50px;
+    margin-left: auto;
   }
-
+  
   .name-text{
     padding-right: 30px;
 
@@ -142,24 +142,22 @@ strong {
   .naver-logo {
     width: 20px;
     height: 20px;
-    margin-left: 8px;
     background-size: cover;
     background-position: center;
     background-image: url("../images/naver.png");
-    margin-right: 20px;
+    margin-right: 8px;
   }
   
   .naver-content {
-    flex: 1;
     font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: white;
   }
-/*kakao*/
-.kakao-container {
+  
+  .radio {
+    margin-left: 10px;
+  }
+  
+  .kakao-container {
     display: flex;
     align-items: center;
     width: 100%;
@@ -177,27 +175,27 @@ strong {
   .kakao-logo {
     width: 20px;
     height: 20px;
-    margin-left: 8px;
     background-size: cover;
     background-position: center;
     background-image: url("../images/kakao.png");
-    margin-right: 20px;
+    margin-right: 8px;
   }
   
   .kakao-content {
-    flex: 1;
     font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: black;
   }
-
-  .radio{
+  
+  .radio-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .radio {
     margin-left: 10px;
   }
-
+  
   hr{
     margin: 2% 0px ;
     color: gray;

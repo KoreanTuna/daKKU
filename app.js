@@ -16,19 +16,25 @@ admin.initializeApp({
 //firebase storage
 
 // 사용할 파일들 지정
-let loadingRouter = require('./routes/loading.js')
-let tutorialRouter = require('./routes/tutorial.js')
-let userizing3Router = require('./routes/userizing3.js')
-let userizing4Router = require('./routes/userizing4.js')
-let loginRouter = require('./routes/login')
-let welcomeRouter = require('./routes/welcome')
+
+let loadingRouter = require("./routes/loading.js");
+let tutorialRouter = require("./routes/tutorial.js");
+let userizing3Router = require("./routes/userizing3.js");
+let userizing4Router = require("./routes/userizing4.js");
+let loginRouter = require("./routes/login");
+let welcomeRouter = require("./routes/welcome");
 let postRouter = require('./routes/post.js')
-let onbording1Router = require('./routes/onboarding1.js')
+let onbording1Router = require("./routes/onboarding1.js");
+let onbording2Router = require("./routes/onboarding2.js");
+let homepageRouter = require("./routes/homepage.js");
+
 let messageRouter = require('./routes/message.js')
 let message1Router = require('./routes/message1.js')
 let message2Router = require('./routes/message2.js')
 let customizeRouter = require('./routes/customize.js')
-let homepageRouter = require('./routes/homepage.js')
+let guestbookRouter = require('./routes/guestbook.js')
+let profileRouter = require('./routes/profile.js')
+
 
 
 
@@ -59,9 +65,14 @@ app.use("/u4", userizing4Router);
 
 app.use("/login", loginRouter);
 app.use("/welcome", welcomeRouter);
+
+
 app.use("/p", postRouter);
 
 app.use("/onboarding1", onbording1Router);
+app.use("/onboarding2", onbording2Router);
+app.use("/profile", profileRouter);
+app.use("/guestbook", guestbookRouter);
 
 // 기타 기능 연습
 app.use("/ar1", archive1Router);

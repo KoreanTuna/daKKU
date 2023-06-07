@@ -24,7 +24,15 @@ router.get('/', async function (req, res, next) {
     //console.log(title);
   }
   console.log(data);
-  res.render('homepage.ejs', {data:data})
-})
+  let customData;
+  const docRef = db.collection('custom').doc('custom'); // 콜렉션과 문서의 참조를 가져옴
+  await docRef.get()
+  .then((doc) => {
+    if (doc.exists) {
+      customData = doc.data(); // JSON 객체 가져오기
+    } 
+  }).then(()=>{
+    res.render('homepage.ejs', {data: customData});
+}
 
 module.exports = router

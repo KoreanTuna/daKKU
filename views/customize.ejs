@@ -11,6 +11,7 @@
     .city {display:none}
     </style>
   
+    <script src="/script/style.js"></script>
   <script>
    
     document.addEventListener("keydown", closeModalOnEsc);
@@ -86,6 +87,96 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.classList.add("w3-light-grey");
         }
+
+        // 버튼누르면 배경화면 바뀌도록
+        var bgimage = backgroundImageURL;
+        function buttonImg1() {
+          document.getElementById("default").src = "/images/hpBackground.png"
+          // bgimage.src="../images/hpBackground.png";
+        }
+        function buttonImg2() {
+          document.getElementById("default").src = "/images/space.png"
+          // bgimage.src="../images/space.png";
+        }
+        function buttonImg3() {
+          document.getElementById("default").src = "/images/orange.png"
+          // bgimage.src="../images/orange.png";
+        }
+        function buttonImg4() {
+          document.getElementById("default").src = "/images/Sweet House Festival 1.png"
+          // bgimage.src="../images/Sweet House Festival 1.png";
+        }
+
+        // 버튼누르면 폴더스타일 지정했다는 표시
+        function change1() {
+          var select = document.getElementById("button-carrot");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-cyber");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-vacation");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change2() {
+          var select = document.getElementById("button-cyber");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-vacation");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change3() {
+          var select = document.getElementById("button-vacation");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-cyber");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-baker");
+          another3.style.border="1px solid gray"
+        }
+        function change4() {
+          var select = document.getElementById("button-baker");
+          select.style.border="3px solid red"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-cyber");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-vacation");
+          another3.style.border="1px solid gray"
+        }
+        function reset() {
+          var another4 = document.getElementById("button-baker");
+          another4.style.border="1px solid gray"
+          var another1 = document.getElementById("button-carrot");
+          another1.style.border="1px solid gray"
+          var another2 = document.getElementById("button-cyber");
+          another2.style.border="1px solid gray"
+          var another3 = document.getElementById("button-vacation");
+          another3.style.border="1px solid gray"
+
+          // 바꾼 색 적용
+          var color = document.getElementById("hex");
+          var changecol = color.value;
+          // primaryColor = changecol;
+        }
+
+        // 배경화면 바꾸기 적용
+        // function bgimgSet() {
+        //   backgroundImageURL = bgimage;
+        // }
+
+        // 바뀐 색상 hex로 나타내기
+        function changename() {
+          var choose = document.getElementById("picker");
+          var result = document.getElementById("hex");
+          result.value = choose.value;
+        }
+
+
   </script>
 </head>
 
@@ -95,7 +186,7 @@
   </button>
   <div id="myModal" class="modal">
     <div id="modalContent" class="modal-content2">
-      <div class="custom-header">
+      <div id="modalHeader" class="custom-header">
           <h1>커스터마이즈</h1>
           <span class="close-btn" onclick="closeModal();">&times;</span>
       </div>
@@ -110,35 +201,43 @@
         <div id="London" class="w3-container city">
          <h1 style="padding-left:30px; padding-top:20px;">Background</h1>
          <p style="padding-left:30px;">배경화면을 선택해주세요.</p>
-         <img src="/images/hpBackground.png" style="width: 400px; padding: 20px 30px 20px 30px;">
+         <img id="default" src="/images/hpBackground.png" style="width: 400px; padding: 20px 30px 20px 30px;">
 
          <div style="padding-left: 25px;">
          <div class="gallery">
           <a target="_blank">
-            <img src="/images/hpBackground.png" alt="Default" width="120" height="80">
+            <button onclick="buttonImg1()">
+              <img id="hp" src="/images/hpBackground.png" alt="Default" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/space.png" alt="Space" width="120" height="80">
+            <button onclick="buttonImg2()">
+              <img id="space" src="/images/space.png" alt="Space" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/orange.png" alt="Orange Man" width="120" height="80">
+            <button onclick="buttonImg3()">
+              <img id="orange" src="/images/orange.png" alt="Orange Man" width="120" height="80">
+            </button>
           </a>
         </div>
         
         <div class="gallery">
           <a target="_blank">
-            <img src="/images/Sweet House Festival 1.png" alt="Festival" width="120" height="80">
+            <button onclick="buttonImg4()">
+              <img id="sweet" src="/images/Sweet House Festival 1.png" alt="Festival" width="120" height="80">
+            </button>
           </a>
         </div>
 
          <div style="text-align:end;">
-          <button style="background-color: rgb(54, 54, 233); color:white; outline: none;border-radius: 5px; padding: 12px 20px 12px 20px; margin: 15px 15px 10px 10px;">설정하기
+          <button onclick="bgimgSet()" style="background-color: rgb(54, 54, 233); color:white; outline: none;border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 15px 10px 10px;">설정하기
           </button>
          </div>
         </div>
@@ -159,6 +258,8 @@
           <div class="item9" style="font: Noto Sans;">Noto Sans</div>  
           <button class="item10" style="font-size:20px; width:180px; outline: none; border-radius: 5px;">선택하기</button>
         </div>
+        <button onclick="reset()" style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 18px 10px 658px;">설정하기
+        </button>
         
         </div>
       
@@ -166,26 +267,30 @@
          <h1 style="padding-left:30px; padding-top:20px;">Folder Style</h1>
          <h2 style="padding-left:30px; color: rgb(116, 116, 116);">Color</h2><br>
          <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
-          <button class="color"></button>
-          
-          
-          <p style="width: 200px; height: 50px; background-color:rgb(229, 229, 229); text-align:center; border: 2px solid gray; border-radius: 3px; font-size:25px;">#533CDE</p>
+          <form action="/action_page.php">
+            <input type="color" id="picker" onchange="changename()" id="favcolor" name="favcolor" value="#533CDE" style="width:100px; height: 100px;"><br><br>
+          </form>
+          <input type="text" id="hex" value="#533CDE" style="width: 200px; height: 70px; font-size: 25px;"><br><br>
          </div>
+
+
          <h2 style="padding-left:30px; color:rgb(116, 116, 116);">Icon</h2><br>
          <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
-          <button class="grid-item">
+          <button class="grid-item" id="button-carrot" onclick="change1()">
             <img src="/images/농장주.png">
           </button>
-          <button class="grid-item">
+          <button class="grid-item" id="button-cyber" onclick="change2()">
             <img src="/images/사이버.png">
           </button>
-          <button class="grid-item">
+          <button class="grid-item" id="button-vacation" onclick="change3()">
             <img src="/images/방학.png">
           </button>  
-          <button class="grid-item">
+          <button class="grid-item" id="button-baker" onclick="change4()">
             <img src="/images/베이커.png">
           </button>
         </div>
+        <button onclick="reset()" style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 15px 15px 10px 650px;">설정하기
+        </button>
         
         </div>
       

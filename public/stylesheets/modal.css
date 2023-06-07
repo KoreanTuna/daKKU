@@ -158,7 +158,7 @@
     margin: 15% auto;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.293);
     width: 800px;
-    height: 760px;
+    height: 780px;
     position: absolute;
     top: 0;
     left: 0;
@@ -182,6 +182,27 @@
     height: auto;
   }
   
+  /* 버튼 hover */
+  .item2:hover {
+    background-color: rgb(54, 54, 233);
+    color: white;
+  }
+  .item4:hover {
+    background-color: rgb(54, 54, 233);
+    color: white;
+  }
+  .item6:hover {
+    background-color: rgb(54, 54, 233);
+    color: white;
+  }
+  .item8:hover {
+    background-color: rgb(54, 54, 233);
+    color: white;
+  }
+  .item10:hover {
+    background-color: rgb(54, 54, 233);
+    color: white;
+  }
   
   @font-face {
     font-family: 'jalnan';

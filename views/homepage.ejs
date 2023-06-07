@@ -89,7 +89,8 @@
     }
 
     function closeNewFolderModal() {
-        document.getElementById('myNewFloderModal').style.display = 'none';
+      document.getElementById('myNewFloderModal').style.display = 'none';
+
     }
 
     function openFile(event, index){
@@ -165,6 +166,11 @@
         document.getElementById('myModal').style.display = 'none';
     }
 
+    function previous() {
+        document.getElementsByClassName('myFile').style.display ='none';
+        document.getElementById('modalContent').style.display ='block';
+    }
+
     function dragElement(elmnt) {
         const header = elmnt.querySelector(".custom-header");
         let offsetX, offsetY;
@@ -203,22 +209,32 @@
         var temp = currentNumber + 1;
         message.innerText = temp;
     }
+
+    function updateTime() {
+    var now = new Date();
+    var hours = String(now.getHours()).padStart(2, '0');
+    var minutes = String(now.getMinutes()).padStart(2, '0');
+    var timeString = hours + ':' + minutes;
+    document.getElementById('currentTime').textContent = timeString;
+  }
+  setInterval(updateTime, 1000);
+
+  updateTime();
 </script>
 
   </head>
 
-  <body>
+  <body id=" ">
     <div class="upside">
       <div class="left">송민우</div>
       <div class="right">
         <div><strong>홈 꾸미기</strong></div>
         <div><strong>파도타기</strong></div>
-        <div>FRI MAR 31</div>
-        <div>10:24 AM</div>
+        <div id ="currentTime"></div>
       </div>
     </div>
 
-    <div id="gridContainer" style="flex-direction: column; padding: 1%;" class="grid">
+    <div id="gridContainer" style="flex-direction: column; padding: 1%; margin-top:50px;" class="grid">
       <div class="image_text_container">
           <img src="/images/folder_carrot.png" onclick="openModal()" class="center folder"><h4>Archive 열기</h4>
       </div>
@@ -227,89 +243,93 @@
       <div id="NewFolderBtn" class="image_text_container">
           <img src="/images/folder_icon.png" onclick="openNewFolderModal()" class="center folder"><h4>New Archive Folder</h4>
       </div>
-  </div>
-  <div id="myModal" class="modal" >
-      <div id="modalContent" class="modal-content">
-          <div class="custom-header">
-              <h1>Archive</h1>
-              <span class="close-btn" onclick="closeModal();">&times;</span>
-          </div>
-          <div class="modal_files_grid">
-          <% for (let i = 0; i < data.length; i++) { %>
-              <div class="image_text_container" onclick="openFile(event, <%=i%>);">
-                  <img src="/images/file.gif" style="text-align: center;" class="center folder">
-                  <h4><%= data[i].title %></h4>
-                  <img>
-              </div>
-          <% } %>
-          </div>
-          <!-- !file을 클릭했을 경우 보이는 화면-->
-          <% for (let i = 0; i < data.length; i++) { %>
-          <div class="myFile">
-              <div id="modal-file-content-<%=i%>" class="modal-file-content" style="position:relative;">
-                  <div id="modal-quill">
-                      <div id="toolbar" style="display: none;">
-                          <button class="ql-bold quillIcon"></button>
-                          <button class="ql-italic quillIcon"></button>
-                          <select class="ql-color quillIcon"></select>
-                          <button class="ql-underline quillIcon"></button>
-                          <button class="ql-strike quillIcon"></button>
-                          <button class="ql-header quillIcon"></button>
-                          <button class="ql-image quillIcon"></button>
-                          <button class="ql-code-block quillIcon"></button>
-                          <select class="ql-align quillIcon"></select>
-                      </div>
-                      <div>
-                          <h1 id="fileTitle"><%= data[i].title %></h1>
-                      </div>
-                      <div id="editor-<%=i%>">
-                          <div id="quill-<%=i%>" class="fileContent"><%- JSON.stringify(data[i].content.ops).replace(/'/g, "&#39;") %></div>
-                      </div>
-                  </div>
-      
-                  <div class="modal-footer">
-                      <div class="button_container">
-                          <button id="heartBtn" onclick="count_heart()"><img src="/images/heart.png"><img></button>
-                          <h4 class="count" id="heartCount">0</h4>
-                          <button id="replyBtn" onclick=""><img src="/images/reply.png"><img></button>
-                          <h4 class="count" id="replyCount">0</h4>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <% } %>
-          
-      </div>
-  </div>
+    </div>
 
-  <div id="myNewFloderModal" class="modal">
-      <div id="newFolderModalContent" class="modal-content" style="background-color: lightsteelblue;">
-          <div class="custom-header">
-              <h1>New Archive Folder</h1>
-              <span class="close-btn" onclick="closeNewFolderModal();">&times;</span>
-          </div>
-          <div style="display: flex; flex-direction: row; padding:50px;">
-              <h1>이름:</h1>
-              <input id="newFolderName" type="text" class="newFolderBox">
-          </div>
-          <div style="display: flex; flex-direction: row; padding:50px;">
-              <h1>권한:</h1>
-              <select id="mySelect" onchange="handleSelectChange()" class="newFolderBox">
-                  <option value="option1"><img src="/images/human.png">송민우</option>
-                  <option value="option2"><img src="/images/human.png">장빛나</option>
-                  <option value="option3"><img src="/images/human.png">송연수</option>
-                  <option value="option2"><img src="/images/human.png">이주향</option>
-                  <option value="option3"><img src="/images/human.png">김영빈</option>
-                </select>
-          </div>
+    <div id="myModal" class="modal">
+        <div id="modalContent" class="modal-content">
+            <div class="custom-header">
+                <h1>Archive</h1>
+                <div>
+                  <span class="previous-btn" onclick="previous();"><img src="/images/previous.png" style="width:25px; padding-right:10px"></span>
+                  <span class="close-btn" onclick="closeModal();">&times;</span>
+                </div>
+            </div>
+            <div class="modal_files_grid">
+            <% for (let i = 0; i < data.length; i++) { %>
+                <div class="image_text_container" onclick="openFile(event, <%=i%>);">
+                    <img src="/images/file.gif" style="text-align: center;" class="center folder">
+                    <h4><%= data[i].title %></h4>
+                    <img>
+                </div>
+            <% } %>
+            </div>
+            <!-- !file을 클릭했을 경우 보이는 화면-->
+            <% for (let i = 0; i < data.length; i++) { %>
+            <div class="myFile">
+                <div id="modal-file-content-<%=i%>" class="modal-file-content" style="position:relative;">
+                    <div id="modal-quill">
+                        <div id="toolbar" style="display: none;">
+                            <button class="ql-bold quillIcon"></button>
+                            <button class="ql-italic quillIcon"></button>
+                            <select class="ql-color quillIcon"></select>
+                            <button class="ql-underline quillIcon"></button>
+                            <button class="ql-strike quillIcon"></button>
+                            <button class="ql-header quillIcon"></button>
+                            <button class="ql-image quillIcon"></button>
+                            <button class="ql-code-block quillIcon"></button>
+                            <select class="ql-align quillIcon"></select>
+                        </div>
+                        <div>
+                            <h1 id="fileTitle"><%= data[i].title %></h1>
+                        </div>
+                        <div id="editor-<%=i%>">
+                            <div id="quill-<%=i%>" class="fileContent"><%- JSON.stringify(data[i].content.ops).replace(/'/g, "&#39;") %></div>
+                        </div>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <div class="button_container">
+                            <button id="heartBtn" onclick="count_heart()"><img src="/images/heart.png"><img></button>
+                            <h4 class="count" id="heartCount">0</h4>
+                            <button id="replyBtn" onclick=""><img src="/images/reply.png"><img></button>
+                            <h4 class="count" id="replyCount">0</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            
+        </div>
+    </div>
 
-          <div class="Container">
-              <button id="newFolderBtn" onclick="addNewFolder()">저장</button>
-           </div>
+    <div id="myNewFloderModal" class="modal">
+        <div id="newFolderModalContent" class="modal-content" style="background-color: lightsteelblue;">
+            <div class="custom-header">
+                <h1>New Archive Folder</h1>
+                <span class="close-btn" onclick="closeNewFolderModal();">&times;</span>
+            </div>
+            <div style="display: flex; flex-direction: row; padding:50px;">
+                <h1>이름:</h1>
+                <input id="newFolderName" type="text" class="newFolderBox">
+            </div>
+            <div style="display: flex; flex-direction: row; padding:50px;">
+                <h1>권한:</h1>
+                <select id="mySelect" onchange="handleSelectChange()" class="newFolderBox">
+                    <option value="option1"><img src="/images/human.png">송민우</option>
+                    <option value="option2"><img src="/images/human.png">장빛나</option>
+                    <option value="option3"><img src="/images/human.png">송연수</option>
+                    <option value="option2"><img src="/images/human.png">이주향</option>
+                    <option value="option3"><img src="/images/human.png">김영빈</option>
+                  </select>
+            </div>
+
+            <div class="Container center">
+                <button id="newFolderBtn" onclick="addNewFolder()" >저장</button>
+            </div>
 
 
-      </div>
-  </div>
+        </div>
+    </div>
       <div class="message-container">
         <div class ="messageimage-container">
           <div class="message-button"></div>

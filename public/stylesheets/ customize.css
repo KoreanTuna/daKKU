@@ -1,0 +1,202 @@
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.modal-content {
+  
+  background-color: #fff;
+  margin: 15% auto;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.293);
+  width: 1040px;
+  height: 720px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+}
+#modal-content{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.custom-header {
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #533CDE;
+  color: #fff;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  cursor:grab;
+}
+
+.custom-header h1 {
+  margin: 0;
+  font-family: "Jalnan";
+  font-size: 24px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.modal-footer {
+  /* background-color: #f2f2f2; */
+
+  margin: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.hash-tags-container{
+  width: 600px;
+  text-align: left;
+
+}
+#hashTags:focus {
+  outline: none;
+}
+#hashTags {
+  display: inline;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+  padding-bottom: 6px;
+}
+
+#tagList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+#addTagBtn{
+  font-family: "Pretendard-Meidum";
+  display: inline-block;
+  background-color: #fff;
+  color: #533CDE;
+  text-decoration: none;
+  padding: 4px 8px;
+  margin-left: 12px;
+  border-radius: 4px;
+  border: 0px;
+  text-align: center;
+  font-size: 16px;
+
+}
+.tag {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 5px;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.tag:hover {
+  background-color: #333;
+  color: #fff;
+}
+.tag-remove {
+  margin-left: 5px;
+  color: #333;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.column button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.column button img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+#saveBtn{
+  width: 140px;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #533CDE;
+  font-size: 20px;
+  font-family: "Pretendard-Bold";
+  color: #fff;
+}
+  

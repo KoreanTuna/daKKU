@@ -3,5 +3,5 @@ node_modules/
 goorm*
 package*.json
 docs/
-.git/
 .DS_Store
+

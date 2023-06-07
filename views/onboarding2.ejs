@@ -1,33 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Onboarding page 2</title>
     <link rel="stylesheet" href="/stylesheets/textStyle.css" />
     <link rel="stylesheet" href="/stylesheets/onboarding2.css" />
-    
+
 </head>
+
 <body>
     <div class="whole">
         <div class="step-progress">
             <div class="step-item">
-                <div class="step-circle selected"><h4>1<h4></div>
-                <div class="step-description selected"><h4>기본 정보</h4></div>
+                <div class="step-circle selected">
+                    <h4>1<h4>
+                </div>
+                <div class="step-description selected">
+                    <h4>기본<br>정보</h4>
+                </div>
             </div>
             <div class="step-line"></div>
             <div class="step-item">
-                <div class="step-circle"><h4>2</h4></div>
-                <div class="step-description"><h4>다음 스탭</h4></div>
+                <div class="step-circle">
+                    <h4>2</h4>
+                </div>
+                <div class="step-description">
+                    <h4>다음<br>스탭</h4>
+                </div>
             </div>
             <div class="step-line"></div>
             <div class="step-item">
-                <div class="step-circle"><h4>3</h4></div>
-                <div class="step-description"><h4>다음 스탭</h4></div>
+                <div class="step-circle">
+                    <h4>3</h4>
+                </div>
+                <div class="step-description">
+                    <h4>다음<br>스탭</h4>
+                </div>
             </div>
             <div class="step-line"></div>
             <div class="step-item">
-                <div class="step-circle"><h4>4</h4></div>
-                <div class="step-description"><h4>마지막 스탭</h4></div>
+                <div class="step-circle">
+                    <h4>4</h4>
+                </div>
+                <div class="step-description">
+                    <h4>마지막 스탭</h4>
+                </div>
             </div>
         </div>
 
@@ -37,19 +55,88 @@
 
         <div class="container">
             <div class="box-group">
-                <button class="box"><img src="/public/images/사이버.png" alt="사이버 이미지"><span id="boxtext">사이버</span></button>
-                <button class="box"><img src="/public/images/농장주.png" alt="농장주 이미지"><span id="boxtext">농장주</span></button>
+                <button class="box boxchoice"><img src="/images/사이버.png" id="boximg" alt="사이버 이미지"><span
+                        id="boxtext">사이버</span></button>
+                <button class="box boxchoice"><img src="/images/농장주.png" id="boximg" alt="농장주 이미지"><span
+                        id="boxtext">농장주</span></button>
             </div>
             <div class="box-group">
-                <button class="box"><img src="/public/images/베이커.png" alt="베이커 이미지"><span id="boxtext">베이커</span></button>
-                <button class="box"><img src="/public/images/방학.png" alt="방학 이미지"><span id="boxtext">방학</span></button>
+                <button class="box boxchoice"><img src="/images/베이커.png" id="boximg" alt="베이커 이미지"><span
+                        id="boxtext">베이커</span></button>
+                <button class="box boxchoice"><img src="/images/방학.png" id="boximg" alt="방학 이미지"><span
+                        id="boxtext">방학</span></button>
             </div>
         </div>
-    
 
-        <div class="button">
+
+        <div id="confirmButton" class="button" style="cursor: pointer"
+            onclick="location.href='http://localhost:3000/u3'">
             <button id="confirmButton" class="confirm-button"><span>확인</span></button>
         </div>
     </div>
+    <script>
+        let backgroundURL = "/images/bg/hpBackground.png";
+        let folderURL = "";
+        let folderAddURL = "";
+        let color = "";
+        const boxConfirm = document.getElementsByClassName("boxchoice");
+
+        for (var i = 0; i < boxConfirm.length; i++) {
+            (function (index) {
+                boxConfirm[index].addEventListener("click", function () {
+                    switch (boxConfirm[index].innerText) {
+                        case "사이버":
+                            backgroundURL = "/images/bg/cyberBG.png";
+                            folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                            folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                            color = "2B34FD";
+                            break;
+                        case "농장주":
+                            backgroundURL = "/images/bg/farmerBG.png";
+                            folderURL = "/images/folderIcon/folder_icon_farmer.png"
+                            folderAddURL = "/images/folderIcon/folder_add_farmer.png";
+                            color = "A24C1F";
+                            break;
+                        case "베이커":
+                            backgroundURL = "/images/bg/bakerBG.png";
+                            folderURL = "/images/folderIcon/folder_icon_baker.png"
+                            folderAddURL = "/images/folderIcon/folder_add_baker.png";
+                            color = "E13A8A";
+                            break;
+                        case "방학":
+                            backgroundURL = "/images/bg/vacationBG.png";
+                            folderURL = "/images/folderIcon/folder_icon_vacation.png"
+                            folderAddURL = "/images/folderIcon/folder_add_vacation.png";
+                            color = "533CDE";
+                            break;
+
+                        default:
+                            backgroundURL = "/images/bg/cyberBG.png";
+                            folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                            folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                            color = "2B34FD";
+                            break;
+                    }
+                })
+            })(i);
+        }
+        const confirmButton = document.getElementById("confirmButton");
+        confirmButton.addEventListener("click", async () => {
+            let data = {
+                backgroundURL: backgroundURL,
+                folderAddURL: folderAddURL,
+                folderURL: folderURL,
+                color: color,
+            };
+            const response = await fetch("/onboarding2/saveCustom", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+        });
+    </script>
 </body>
+
 </html>

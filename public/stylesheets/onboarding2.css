@@ -86,7 +86,12 @@ body {
     margin: 10px;
     border-radius: 10px;
     align-items: center;
-  justify-content: center; 
+    justify-content: center; 
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   }
 
   .box-group{
@@ -94,13 +99,20 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  #boximg{
+    height: 90px;
+    width: 90px;
+    margin-top: 15px;
+  }
   
   #boxtext {
     color: white;
     text-align: center;
     font-size: 15px;
-    line-height: 250px;
+    line-height: 30px;
     font-family: 'Jalnan';
+    margin-top: 10px;
   }
   
   .container {

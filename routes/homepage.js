@@ -33,6 +33,7 @@ router.get('/', async function (req, res, next) {
     } 
   }).then(()=>{
     res.render('homepage.ejs', {data: customData});
-}
+  });
+});
 
 module.exports = router

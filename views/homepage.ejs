@@ -14,234 +14,233 @@
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function() {
-    // 초기에 팝업창을 숨김
-        $('.popup-1, .popup-2, .popup-3').css('display', 'none'); 
+      $(document).ready(function() {
+      // 초기에 팝업창을 숨김
+          $('.popup-1, .popup-2, .popup-3').css('display', 'none'); 
 
-        $('.message-button').on('click', function(e) {
-            e.preventDefault();
-            $('.popup-1').fadeIn();
-        });
+          $('.message-button').on('click', function(e) {
+              e.preventDefault();
+              $('.popup-1').fadeIn();
+          });
 
-        $('.edit-icon').on('click', function(e) {
-            e.preventDefault();
-            $('.popup-1').fadeOut();
-            $('.popup-2').fadeIn();
-        });
-        //big-container
-        $('.big-container').on('click', function(e) {
-            e.preventDefault();
-            $('.popup-1').fadeOut();
-            $('.popup-3').fadeIn();
-        });
+          $('.edit-icon').on('click', function(e) {
+              e.preventDefault();
+              $('.popup-1').fadeOut();
+              $('.popup-2').fadeIn();
+          });
+          //big-container
+          $('.big-container').on('click', function(e) {
+              e.preventDefault();
+              $('.popup-1').fadeOut();
+              $('.popup-3').fadeIn();
+          });
 
-        // 'X' 버튼을 클릭했을 때 팝업을 숨깁니다.
-        $('.x-icon').on('click', function(e) {
-            e.stopPropagation();
-            $('.popup-1, .popup-2, .popup-3').fadeOut();
-        });
+          // 'X' 버튼을 클릭했을 때 팝업을 숨깁니다.
+          $('.x-icon').on('click', function(e) {
+              e.stopPropagation();
+              $('.popup-1, .popup-2, .popup-3').fadeOut();
+          });
 
-        $('.popup-1, .popup-2, .popup-3').on('click', function(e) {
-            e.stopPropagation();
-        });
-    });
-  </script>
-  <script>
-    let currentRow = 0;
-    let currentColumn = 0;
-    const maxRows = 4; // 최대 출력 가능한 폴더 행 수
-    const maxColumns = 4; // 최대 출력 가능한 폴더 열 수
+          $('.popup-1, .popup-2, .popup-3').on('click', function(e) {
+              e.stopPropagation();
+          });
+      });
+    </script>
+    <script>
+      let currentRow = 0;
+      let currentColumn = 0;
+      const maxRows = 4; // 최대 출력 가능한 폴더 행 수
+      const maxColumns = 4; // 최대 출력 가능한 폴더 열 수
 
-    let newFolderRow = 1;
-    let newFolderColumn = 0;
+      let newFolderRow = 1;
+      let newFolderColumn = 0;
 
-    document.addEventListener("keydown", closeModalOnEsc);
-    function closeModalOnEsc(e) {
-        e = e || window.event;
-        const modal = document.getElementById('myModal');
-        if (e.key === "Escape" && modal.style.display === "block") {
-            closeModal();
-        }
-    }
+      document.addEventListener("keydown", closeModalOnEsc);
+      function closeModalOnEsc(e) {
+          e = e || window.event;
+          const modal = document.getElementById('myModal');
+          if (e.key === "Escape" && modal.style.display === "block") {
+              closeModal();
+          }
+      }
 
-    function openModal() {
-        const modal = document.getElementById('myModal');
-        const modalContent = document.getElementById('modalContent');
-        modal.style.display = 'block';
+      function openModal() {
+          const modal = document.getElementById('myModal');
+          const modalContent = document.getElementById('modalContent');
+          modal.style.display = 'block';
 
-        // 화면 중앙에 모달창 배치
-        modalContent.style.position = 'fixed';
-        modalContent.style.top = '50%';
-        modalContent.style.left = '50%';
-        modalContent.style.transform = 'translate(-50%, -90%)';
-    }
-    
-    function openNewFolderModal() {
-        const modal = document.getElementById('myNewFloderModal');
-        const modalContent = document.getElementById('newFolderModalContent');
-        modal.style.display = 'block';
+          // 화면 중앙에 모달창 배치
+          modalContent.style.position = 'fixed';
+          modalContent.style.top = '50%';
+          modalContent.style.left = '50%';
+          modalContent.style.transform = 'translate(-50%, -90%)';
+      }
+      
+      function openNewFolderModal() {
+          const modal = document.getElementById('myNewFloderModal');
+          const modalContent = document.getElementById('newFolderModalContent');
+          modal.style.display = 'block';
 
-        // 화면 중앙에 모달창 배치
-        modalContent.style.position = 'fixed';
-        modalContent.style.top = '50%';
-        modalContent.style.left = '50%';
-        modalContent.style.transform = 'translate(-50%, -90%)';
-    }
+          // 화면 중앙에 모달창 배치
+          modalContent.style.position = 'fixed';
+          modalContent.style.top = '50%';
+          modalContent.style.left = '50%';
+          modalContent.style.transform = 'translate(-50%, -90%)';
+      }
 
-    function closeNewFolderModal() {
-      document.getElementById('myNewFloderModal').style.display = 'none';
+      function closeNewFolderModal() {
+        document.getElementById('myNewFloderModal').style.display = 'none';
 
-    }
+      }
 
-    function openFile(event, index){
-        event.stopPropagation(); // 이벤트 버블링 방지
+      function openFile(event, index){
+          event.stopPropagation(); // 이벤트 버블링 방지
 
-        //파일 열기
-        const fileElements = document.getElementsByClassName('myFile');
-        const file = fileElements[index];
-        
-        const fileContent = document.querySelector('#modal-file-content-' + index);
+          //파일 열기
+          const fileElements = document.getElementsByClassName('myFile');
+          const file = fileElements[index];
+          
+          const fileContent = document.querySelector('#modal-file-content-' + index);
 
-        const fileIcons = document.getElementsByClassName('fileIcon');
+          const fileIcons = document.getElementsByClassName('fileIcon');
 
-        if (fileIcons) {
-            for (let i = 0; i < fileIcons.length; i++) {
-                fileIcons[i].style.display = 'none';
+          if (fileIcons) {
+              for (let i = 0; i < fileIcons.length; i++) {
+                  fileIcons[i].style.display = 'none';
 
-            }
-        }
+              }
+          }
 
-        const modalFilesGrid = document.getElementsByClassName('modal_files_grid');
-        modalFilesGrid[0].style.display="none";
+          const modalFilesGrid = document.getElementsByClassName('modal_files_grid');
+          modalFilesGrid[0].style.display="none";
 
-        const fileTitle = document.getElementById('fileTitle');
-        console.log("fileTitle: ",fileTitle);
+          const fileTitle = document.getElementById('fileTitle');
+          //console.log("fileTitle: ",fileTitle);
 
-        const toolbar = document.getElementById('toolbar');
-        toolbar.style.display = 'none';
+          const toolbar = document.getElementById('toolbar');
+          toolbar.style.display = 'none';
 
-        let quill;
+          let quill;
 
-        var element = document.getElementById("editor-"+index);
-        console.log("element: ",element);
-        var contentString = element.textContent;
-        console.log(element.textContent);
-        var contentObject = JSON.parse(contentString);
-        console.log(contentObject);
+          var element = document.getElementById("editor-"+index);
+          //console.log("element: ",element);
+          var contentString = element.textContent;
+          //console.log(element.textContent);
+          var contentObject = JSON.parse(contentString);
+          //console.log(contentObject);
 
-        // Implement and register module
-        Quill.register('modules/counter', function(quill, options) {
-            var container = document.querySelector('#counter');
-            quill.on('text-change', function() {
-                var text = quill.getText();
-                // There are a couple issues with counting words
-                // this way but we'll fix these later
-                container.innerText = text.split(/\s+/).length;
-            });
-        });
+          // Implement and register module
+          Quill.register('modules/counter', function(quill, options) {
+              var container = document.querySelector('#counter');
+              quill.on('text-change', function() {
+                  var text = quill.getText();
+                  // There are a couple issues with counting words
+                  // this way but we'll fix these later
+                  container.innerText = text.split(/\s+/).length;
+              });
+          });
 
+          if (element) {
+              setContent(contentObject, index);
+          }
+          
+          file.style.display = 'block';
+          fileContent.style.display = 'block';
+      }  
+      
 
-        if (element) {
-            setContent(contentObject, index);
-        }
-        
-        file.style.display = 'block';
-        fileContent.style.display = 'block';
-    }  
-    
+      function getContentAsDelta(quillInstance) {
+          const content = quillInstance.getContents();
+          //console.log("delta:", content);
+          return content;
+      }
+                  
 
-    function getContentAsDelta(quillInstance) {
-        const content = quillInstance.getContents();
-        console.log("delta:", content);
-        return content;
-    }
-                
+      function applyDataToQuill(data) {
+          const deltaData = getContentAsDelta(data);
+          return deltaData;
+      }
 
-    function applyDataToQuill(data) {
-        const deltaData = getContentAsDelta(data);
-        return deltaData;
-    }
+      function closeModal() {
+          document.getElementById('myModal').style.display = 'none';
+      }
 
-    function closeModal() {
-        document.getElementById('myModal').style.display = 'none';
-    }
+      function previous() {
+          document.getElementsByClassName('myFile').style.display ='none';
+          document.getElementById('modalContent').style.display ='block';
+      }
 
-    function previous() {
-        document.getElementsByClassName('myFile').style.display ='none';
-        document.getElementById('modalContent').style.display ='block';
-    }
+      function dragElement(elmnt) {
+          const header = elmnt.querySelector(".custom-header");
+          let offsetX, offsetY;
 
-    function dragElement(elmnt) {
-        const header = elmnt.querySelector(".custom-header");
-        let offsetX, offsetY;
+          header.onmousedown = dragMouseDown;
 
-        header.onmousedown = dragMouseDown;
+          function dragMouseDown(e) {
+              e = e || window.event;
+              e.preventDefault();
+              offsetX = e.clientX - elmnt.getBoundingClientRect().left;
+              offsetY = e.clientY - elmnt.getBoundingClientRect().top;
 
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            offsetX = e.clientX - elmnt.getBoundingClientRect().left;
-            offsetY = e.clientY - elmnt.getBoundingClientRect().top;
+              document.onmouseup = closeDragElement;
+              document.onmousemove = elementDrag;
+          }
 
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-        }
+          function elementDrag(e) {
+              e = e || window.event;
+              e.preventDefault();
 
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
+              elmnt.style.position = "fixed";
+              elmnt.style.left = (e.clientX - offsetX) + "px";
+              elmnt.style.top = (e.clientY - offsetY) + "px";
+              elmnt.style.margin = 0; // 이 부분을 추가해주세요
+              elmnt.style.transform = "none"; // 이 부분을 추가해주세요
+          }
 
-            elmnt.style.position = "fixed";
-            elmnt.style.left = (e.clientX - offsetX) + "px";
-            elmnt.style.top = (e.clientY - offsetY) + "px";
-            elmnt.style.margin = 0; // 이 부분을 추가해주세요
-            elmnt.style.transform = "none"; // 이 부분을 추가해주세요
-        }
+          function closeDragElement() {
+              document.onmouseup = null;
+              document.onmousemove = null;
+          }
+      }
+      function outputMessage(){
+          var message = document.getElementById("output");
+          var currentNumber = parseInt(message.innerText);
+          var temp = currentNumber + 1;
+          message.innerText = temp;
+      }
 
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-    function outputMessage(){
-        var message = document.getElementById("output");
-        var currentNumber = parseInt(message.innerText);
-        var temp = currentNumber + 1;
-        message.innerText = temp;
-    }
+      function updateTime() {
+        var now = new Date();
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
+        var timeString = hours + ':' + minutes;
+        document.getElementById('currentTime').textContent = timeString;
+      }
+      setInterval(updateTime, 1000);
 
-    function updateTime() {
-    var now = new Date();
-    var hours = String(now.getHours()).padStart(2, '0');
-    var minutes = String(now.getMinutes()).padStart(2, '0');
-    var timeString = hours + ':' + minutes;
-    document.getElementById('currentTime').textContent = timeString;
-  }
-  setInterval(updateTime, 1000);
-
-  updateTime();
-</script>
-
+      updateTime();
+    </script>
   </head>
-
-  <div id="topbar" class="upside">
-    <div class="left">송민우</div>
-    <div class="right">
-      <div><strong>홈 꾸미기</strong></div>
-      <div><strong>파도타기</strong></div>
-      <div>FRI MAR 31</div>
-      <div>10:24 AM</div>
-    </div>
-  </div>
-
-    <div id="gridContainer" style="flex-direction: column; padding: 1%; margin-top:50px;" class="grid">
-      <div class="image_text_container">
-          <img src="/images/folder_carrot.png" onclick="openModal()" class="center folder"><h4>Archive 열기</h4>
+  <body>
+    <div id="topbar" class="upside">
+      <div class="left">송민우</div>
+      <div class="right">
+        <div><strong>홈 꾸미기</strong></div>
+        <div><strong>파도타기</strong></div>
+        <div>FRI MAR 31</div>
+        <div id="currentTime"></div>
       </div>
+    </div>
+    <div id="gridContainer" style="flex-direction: column; padding: 1%; margin-top:50px;" class="grid">
+      <div id="originalFolder" class="image_text_container">
+        <img src="<%= data.folderURL %>" onclick="openModal()" class="folderImage center folder"><h4>Archive 열기</h4>
+        <!--<img src="/images/folder_carrot.png" onclick="openModal()" class="center folder"><h4>Archive 열기</h4>-->
+      </div>
+      
       <!--<div id="folderContainer" style="flex-direction: column;" class=" hidden"></div>-->
       
       <div id="NewFolderBtn" class="image_text_container">
-          <img src="/images/folder_icon.png" onclick="openNewFolderModal()" class="center folder"><h4>New Archive Folder</h4>
+          <img src= "<%= data.folderAddURL %>" onclick="openNewFolderModal()" class="center folder"><h4>New Archive Folder</h4>
       </div>
     </div>
 
@@ -250,21 +249,20 @@
             <div class="custom-header">
                 <h1>Archive</h1>
                 <div>
-                  <span class="previous-btn" onclick="previous();"><img src="/images/previous.png" style="width:25px; padding-right:10px"></span>
-                  <span class="close-btn" onclick="closeModal();">&times;</span>
+                    <span class="previous-btn" onclick="previous();"><img src="/images/previous.png" style="width:25px; padding-right:10px"></span>
+                    <span class="close-btn" onclick="closeModal();">&times;</span>
                 </div>
             </div>
             <div class="modal_files_grid">
-            <% for (let i = 0; i < data.length; i++) { %>
-                <div class="image_text_container" onclick="openFile(event, <%=i%>);">
-                    <img src="/images/file.gif" style="text-align: center;" class="center folder">
-                    <h4><%= data[i].title %></h4>
-                    <img>
-                </div>
-            <% } %>
+              <% for (let i = 0; i < data2.length; i++) { %>
+                  <div class="image_text_container" onclick="openFile(event, <%=i%>);">
+                      <img src="/images/file.gif" style="text-align: center;" class="center folder">
+                      <h4><%= data2[i].title %></h4>
+                  </div>
+              <% } %>
             </div>
             <!-- !file을 클릭했을 경우 보이는 화면-->
-            <% for (let i = 0; i < data.length; i++) { %>
+            <% for (let i = 0; i < data2.length; i++) { %>
             <div class="myFile">
                 <div id="modal-file-content-<%=i%>" class="modal-file-content" style="position:relative;">
                     <div id="modal-quill">
@@ -280,10 +278,10 @@
                             <select class="ql-align quillIcon"></select>
                         </div>
                         <div>
-                            <h1 id="fileTitle"><%= data[i].title %></h1>
+                            <h1 id="fileTitle"><%= data2[i].title %></h1>
                         </div>
                         <div id="editor-<%=i%>">
-                            <div id="quill-<%=i%>" class="fileContent"><%- JSON.stringify(data[i].content.ops).replace(/'/g, "&#39;") %></div>
+                            <div id="quill-<%=i%>" class="fileContent"><%- JSON.stringify(data2[i].content.ops).replace(/'/g, "&#39;") %></div>
                         </div>
                     </div>
         
@@ -297,8 +295,7 @@
                     </div>
                 </div>
             </div>
-            <% } %>
-            
+            <% } %>  
         </div>
     </div>
 
@@ -326,172 +323,185 @@
             <div class="Container center">
                 <button id="newFolderBtn" onclick="addNewFolder()" >저장</button>
             </div>
-
-
         </div>
     </div>
-      <div class="message-container">
-        <div class ="messageimage-container">
-          <div class="message-button"></div>
-          <div class="message-text">쪽지함</div>
 
-        </div>
-        <div class="box-bottom">
-          <!-- 한칸 -->
-          <div class="big-container">
-            <div class="mess-container">
-              <div class="mess-logo"></div>
-              <div class="mess-content1">
-                <p>Smile_2</p>
-              </div>
-              <div class="mess-date">
-                <p>3/29/2023 5:43PM</p>
+    <div class="message-container">
+      <div class ="messageimage-container">
+        <div class="message-button"></div>
+        <div class="message-text">쪽지함</div>
+      </div>
+    </div>
+  <!--팝업-->
+    <div class="popup popup-1">
+      <div class="container">
+        <div class="box">
+          <div class="box-top">
+            <div class="box-text">
+              <div>
+                <p>쪽지함</p>
               </div>
             </div>
-            <div class="mess-content2">
-              <p>Thank you for borrowing book!</p>
+            <div class="box-icons">
+              <div class="edit-icon">Write</div>
+              <div class="x-icon">X</div>
             </div>
           </div>
+          <div class="box-bottom">
+            <!-- 한칸 -->
+            <div class="big-container">
+              <div class="mess-container">
+                <div class="mess-logo"></div>
+                <div class="mess-content1">
+                  <p>Smile_2</p>
+                </div>
+                <div class="mess-date">
+                  <p>3/29/2023 5:43PM</p>
+                </div>
+              </div>
+              <div class="mess-content2">
+                <p>Thank you for borrowing book!</p>
+              </div>
+            </div>
 
-          <!-- 두칸 -->
-          <div class="big-container">
-            <div class="mess-container">
-              <div class="mess-logo"></div>
-              <div class="mess-content1">
-                <p>YB</p>
+            <!-- 두칸 -->
+            <div class="big-container">
+              <div class="mess-container">
+                <div class="mess-logo"></div>
+                <div class="mess-content1">
+                  <p>YB</p>
+                </div>
+                <div class="mess-date">
+                  <p>3/29/2023 5:43PM</p>
+                </div>
               </div>
-              <div class="mess-date">
-                <p>3/29/2023 5:43PM</p>
+              <div class="mess-content2">
+                <p>가오갤 개봉했다는데 이번주 금요일 어떻묘?</p>
               </div>
             </div>
-            <div class="mess-content2">
-              <p>가오갤 개봉했다는데 이번주 금요일 어떻묘?</p>
-            </div>
-          </div>
 
           <!-- 세칸 -->
           <div class="big-container">
             <div class="mess-container">
-              <div class="mess-logo"></div>
-              <div class="mess-content1">
-                <p>Anonymous</p>
+                <div class="mess-logo"></div>
+                <div class="mess-content1">
+                  <p>Anonymous</p>
+                </div>
+                <div class="mess-date">
+                  <p>3/30/2023 12:43AM</p>
+                </div>
               </div>
-              <div class="mess-date">
-                <p>3/30/2023 12:43AM</p>
-              </div>
+              <div class="mess-content2">
+                <p>Happy Birthday!</p>
+              </div>            
             </div>
-            <div class="mess-content2">
-              <p>Happy Birthday!</p>
-            </div>
-          </div>
 
 
           <!-- 네칸 -->
           <div class="big-container">
             <div class="mess-container">
-              <div class="mess-logo"></div>
-              <div class="mess-content1">
-                <p>Light</p>
+                <div class="mess-logo"></div>
+                <div class="mess-content1">
+                  <p>Light</p>
+                </div>
+                <div class="mess-date">
+                  <p>3/30/2023 11:50PM</p>
+                </div>
               </div>
-              <div class="mess-date">
-                <p>3/30/2023 11:50PM</p>
-              </div>
+              <div class="mess-content2">
+                <p>종강 언제하냐</p>
+              </div>            
             </div>
-            <div class="mess-content2">
-              <p>종강 언제하냐</p>
-            </div>
+            <div class="mess-border"></div>
           </div>
-          <div class="mess-border"></div>
         </div>
       </div>
     </div>
-  </div>
 
 
   <!--팝업2-->
   <div class="popup popup-2">
-    <div class="container2">
-      <div class="box2">
-        <div class="box-top2">
-          <div class="box-text2">
-            <div>
-              <p>쪽지보내기</p>
-            </div>
-          </div>
-          <div class="box-icons">
-            <!--<div class="edit-icon">Edit</div>-->
-            <div class="x-icon">X</div>
+  <div class="container2">
+    <div class="box2">
+      <div class="box-top2">
+        <div class="box-text2">
+          <div>
+            <p>쪽지보내기</p>
           </div>
         </div>
+        <div class="box-icons">
+          <!--<div class="edit-icon">Edit</div>-->
+          <div class="x-icon">X</div>
+        </div>
+      </div>
 
-        <!--하단부분-->
+      <!--하단부분-->
         <div class="box-bottom2">
-          <!-- Dear -->
+          <!-- Dear -->            
           <div class="mess-container2">
-            <div class="mess-content1D">
-              <p>Dear</p>
+              <div class="mess-content1D"><p>Dear</p></div>
             </div>
-          </div>
-          <div class="white-box12">
-            <div class="dear-logo2"></div>
+          <div class = "white-box12">
+            <div class = "dear-logo2"></div>
             <p>MINWOO</p>
           </div>
-          <div class="white-box22">
-            <div class="box2-text">
+          <div class = "white-box22">
+            <div class = "box2-text" >
               <p>7주차도 이겨내보자!!<br>화이팅</p>
             </div>
           </div>
 
-          <div class="send-button">
+          <div class = "send-button">
             <p>보내기</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup popup-3">
+      <div class="container">
+        <div class="box">
+          <div class="box-top">
+            <div class="box-text">
+              <div>
+                <p>받은쪽지</p>
+              </div>
+            </div>
+            <div class="box-icons">
+              <!--<div class="edit-icon">Edit</div>-->
+              <div class="x-icon">X</div>
+            </div>
+          </div>
+
+          <!--하단부분-->
+          <div class="box-bottom">
+            <!-- Dear -->            
+            <div class="mess-container">
+                <div class="mess-content1D"><p>From</p></div>
+              </div>
+            <div class = "white-box1">
+              <div class = "dear-logo"></div>
+              <p>YB</p>
+            </div>
+            <div class = "white-box2"><p>가오갤 개봉했다는데<br>이번주 금요일 어떻묘?</p>
+            </div>
+
+          <!--button-->
+          <div class = "buttons">
+              <div class = "send-button1">
+                  <p>답장</p>
+                </div>
+                <div class = "send-button2">
+                  <p>삭제</p>
+                </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="popup popup-3">
-    <div class="container">
-      <div class="box">
-        <div class="box-top">
-          <div class="box-text">
-            <div>
-              <p>받은쪽지</p>
-            </div>
-          </div>
-          <div class="box-icons">
-            <!--<div class="edit-icon">Edit</div>-->
-            <div class="x-icon">X</div>
-          </div>
-        </div>
-
-        <!--하단부분-->
-        <div class="box-bottom">
-          <!-- Dear -->
-          <div class="mess-container">
-            <div class="mess-content1D">
-              <p>From</p>
-            </div>
-          </div>
-          <div class="white-box1">
-            <div class="dear-logo"></div>
-            <p>YB</p>
-          </div>
-          <div class="white-box2">
-            <p>가오갤 개봉했다는데<br>이번주 금요일 어떻묘?</p>
-          </div>
-
-          <!--button-->
-          <div class="buttons">
-            <div class="send-button1">
-              <p>답장</p>
-            </div>
-            <div class="send-button2">
-              <p>삭제</p>
-            </div>
-          </div>
-        </div>
-      </div>
       <script src="/script/archive1.js"></script>
   <script>
       function setContent(content, index) {
@@ -509,7 +519,7 @@
 
        function count_heart() {
           var num = document.getElementById("heartCount");
-          console.log("이건 heart: " + num);
+          //("이건 heart: " + num);
           num.innerText = Number(num.innerText) + 1;
       }
   
@@ -542,16 +552,25 @@
       ImageTextContainer.classList.add("image_text_container");
       
       var folderImage = document.createElement("img");
-      folderImage.src = "/images/folder_carrot.png";
+      folderURL = "<%= data.folderURL %>";
+      folderImage.src = folderURL;
+      
       folderImage.onclick = openModal;
-      folderImage.className = "center folder";
+      folderImage.className = "folderImage center folder";
       folderImage.style = "text-align: center; color:white;";
+
+      
 
       var folderName = document.createElement("h4");
       if(newFolderName){
           folderName.innerText = newFolderName;
       }else{
           folderName.innerText = "새폴더";
+      }
+      console.log("folderURL:",folderURL);
+      if(folderURL == "/images/folderIcon/folder_add_cyber.png")
+      {
+        folderName.style.color = "white";
       }
 
       ImageTextContainer.appendChild(folderImage);
@@ -586,20 +605,36 @@
     let folderURL = '<%= data.folderURL %>';
     let folderAddURL = '<%= data.folderAddURL %>';
     let color = '<%= data.color %>';
+
+    const NewFolderBtn = document.getElementById("NewFolderBtn");
+    const originalFolder = document.getElementById("originalFolder")
+    const text = NewFolderBtn.querySelector("h4");
+    const text2 = originalFolder.querySelector("h4");
+
+    if(color == "2B34FD"){
+      text.style.color = "white";
+      text2.style.color = "white";
+    }else{
+      text.style.color = "black";
+      text2.style.color = "black";
+    }
+
     const body = document.getElementsByTagName("body")[0];
-    const addFolder = document.getElementById("addFolder");
-    const folderImage = document.getElementsByClassName("folderURL");
+    //const addFolder = document.getElementById("addFolder");
+    //const addFolder = document.getElementById("newFolderImage");
+    //const folderImage = document.getElementsByClassName("folderImage");
     const topbar = document.getElementById("topbar");
     document.addEventListener('DOMContentLoaded', function () {
       body.style.backgroundImage = `url(${backgroundURL})`;
       body.style.backgroundSize = "cover";
       body.style.backgroundPosition = "center top";
-      addFolder.style.backgroundImage = `url(${folderAddURL})`;
+      //addFolder.src= `url(${folderAddURL})`;
       topbar.style.backgroundColor = `#${color}`;
       body.style.backgroundColor = `#${color}`;
-      for (let i = 0; i < folderImage.length; i++) {
-        folderImage[i].style.backgroundImage = `url(${folderURL})`;
-      }
+      // for (let i = 0; i < folderImage.length; i++) {
+      //   folderImage[i].src = `url(${folderURL})`;
+      //   folderImage[i].src
+      // }
     });
   </script>
   </body>

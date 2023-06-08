@@ -9,21 +9,21 @@ router.get('/', async function (req, res, next) {
 
   const documentAll = await collectionPost.get();
   const documentList = documentAll.docs.map(item => item.id);
-  let data= [];
+  let fileData= [];
 
   for(let i = 0; i<documentList.length; i++){
     let document = collectionPost.doc(documentList[i]);
     let temp = await document.get();
-    data.push(temp.data());
+    fileData.push(temp.data());
   }
-  for(let i = 0; i<data.length; i++){
-    let content = data[i].content.ops;
-    let title = data[i].title;
+  for(let i = 0; i<fileData.length; i++){
+    let content = fileData[i].content.ops;
+    let title = fileData[i].title;
     
     //console.log(content);
     //console.log(title);
   }
-  console.log(data);
+  
   let customData;
   const docRef = db.collection('custom').doc('custom'); // 콜렉션과 문서의 참조를 가져옴
   await docRef.get()
@@ -32,8 +32,11 @@ router.get('/', async function (req, res, next) {
       customData = doc.data(); // JSON 객체 가져오기
     } 
   }).then(()=>{
-    res.render('homepage.ejs', {data: customData});
-  });
-});
+    
+    res.render('homepage.ejs', {data: customData, data2: fileData});
+})
+
+})
+
 
 module.exports = router

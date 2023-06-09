@@ -55,26 +55,42 @@
 
         <div class="container">
             <div class="box-group">
-                <button class="box boxchoice"><img src="/images/사이버.png" id="boximg" alt="사이버 이미지"><span
-                        id="boxtext">사이버</span></button>
-                <button class="box boxchoice"><img src="/images/농장주.png" id="boximg" alt="농장주 이미지"><span
-                        id="boxtext">농장주</span></button>
+                <button id="box1" class="box boxchoice"><img src="/images/사이버.png" id="boximg" alt="사이버 이미지">
+                    <span id="boxtext">사이버</span></button>
+                <button id="box2" class="box boxchoice"><img src="/images/농장주.png" id="boximg" alt="농장주 이미지">
+                    <span id="boxtext">농장주</span></button>
             </div>
             <div class="box-group">
-                <button class="box boxchoice"><img src="/images/베이커.png" id="boximg" alt="베이커 이미지"><span
-                        id="boxtext">베이커</span></button>
-                <button class="box boxchoice"><img src="/images/방학.png" id="boximg" alt="방학 이미지"><span
-                        id="boxtext">방학</span></button>
+                <button id="box3" class="box boxchoice"><img src="/images/베이커.png" id="boximg" alt="베이커 이미지">
+                    <span id="boxtext">베이커</span></button>
+                <button id="box4" class="box boxchoice"><img src="/images/방학.png" id="boximg" alt="방학 이미지">
+                    <span id="boxtext">방학</span></button>
             </div>
         </div>
 
 
-        <div id="confirmButton" class="button" style="cursor: pointer"
+        <div id="confirm-button" class="button" style="cursor: pointer"
             onclick="location.href='http://localhost:3000/u3'">
             <button id="confirmButton" class="confirm-button"><span>확인</span></button>
         </div>
     </div>
     <script>
+        let buttons = document.getElementsByClassName('box');
+
+        for(let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+            for(let j = 0; j < buttons.length; j++) {
+            buttons[j].classList.remove('selected');
+            }
+            this.classList.add('selected');
+        });
+        }
+        for(let i = 0; i < buttons.length; i++) {
+
+       
+        }
+
+
         let backgroundURL = "/images/bg/hpBackground.png";
         let folderURL = "";
         let folderAddURL = "";

@@ -22,72 +22,73 @@
 
 <body>
 
-  <button onclick="openModal()" style="background-color: rgb(54, 54, 233); color: white; outline: none; border-radius: 5px; padding: 12px;">customize
+  <button onclick="openCustomModal()" style="background-color: rgb(54, 54, 233); color: white; outline: none; border-radius: 5px; padding: 12px;">customize
   </button>
-  <div id="myModal" class="modal">
-    <div id="modalContent" class="modal-content2">
+
+  <div id="myCustomModal" class="modal">
+    <div id="customModalContent" class="modal-content2">
       <div id="modalHeader" class="custom-header">
           <h1>커스터마이즈</h1>
-          <span class="close-btn" onclick="closeModal();">&times;</span>
+          <span class="close-btn" onclick="closeCustomModal();">&times;</span>
       </div>
 
 
-        <div class="w3-bar w3-border-bottom" style="padding:20px;">
-         <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">Background</button>
-         <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">Font</button>
-         <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Tokyo')">Folder Style</button>
-        </div>
+      <div class="w3-bar w3-border-bottom" style="padding:20px;">
+        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">Background</button>
+        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">Font</button>
+        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Tokyo')">Folder Style</button>
+      </div>
       
-        <div id="London" class="w3-container city">
-         <h1 style="padding-left:30px; padding-top:20px;">Background</h1>
-         <p style="padding-left:30px;">배경화면을 선택해주세요.</p>
-         <img id="default" src="/images/bg/vacationBG.png" style="width: 400px; padding: 20px 30px 20px 30px;">
+      <div id="London" class="w3-container city">
+        <h1 style="padding-left:30px; padding-top:20px;">Background</h1>
+        <p style="padding-left:30px;">배경화면을 선택해주세요.</p>
+        <img id="default" src="/images/bg/vacationBG.png" style="width: 400px; padding: 20px 30px 20px 30px;">
 
-         <div style="padding-left: 25px;">
-         <div class="gallery">
-          <a target="_blank">
-            <button onclick="buttonImg1()" class="backgroundChoice">
-              <img id="hp" src="/images/bg/vacationBG.png" alt="Default" width="120" height="80">
-            </button>
-          </a>
-        </div>
-        
+        <div style="padding-left: 25px;">
         <div class="gallery">
-          <a target="_blank">
-            <button onclick="buttonImg2()" class="backgroundChoice">
-              <img id="space" src="/images/bg/cyberBG.png" alt="Space" width="120" height="80">
-            </button>
-          </a>
-        </div>
-        
-        <div class="gallery">
-          <a target="_blank">
-            <button onclick="buttonImg3()" class="backgroundChoice">
-              <img id="orange" src="/images/bg/farmerBG.png" alt="Orange Man" width="120" height="80">
-            </button>
-          </a>
-        </div>
-        
-        <div class="gallery">
-          <a target="_blank">
-            <button onclick="buttonImg4()" class="backgroundChoice">
-              <img id="sweet" src="/images/bg/bakerBG.png" alt="Festival" width="120" height="80">
-            </button>
-          </a>
-        </div>
-
-         <div style="text-align:end;">
-          <button id="BGconfirmButton" 
-          style="background-color: rgb(54, 54, 233); color:white; outline: none;border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 15px 10px 10px;">설정하기
+        <a target="_blank">
+          <button onclick="buttonImg1()" class="backgroundChoice">
+            <img id="hp" src="/images/bg/vacationBG.png" alt="Default" width="120" height="80">
           </button>
-         </div>
-        </div>
+        </a>
       </div>
       
-        <div id="Paris" class="w3-container city">
-         <h1 style="padding-left:30px; padding-top:20px;">Font</h1>
-         <p style="padding-left:30px;">현재 폰트는 '여기어때 잘난체'입니다.</p>
-         <div class="grid-container2">
+      <div class="gallery">
+        <a target="_blank">
+          <button onclick="buttonImg2()" class="backgroundChoice">
+            <img id="space" src="/images/bg/cyberBG.png" alt="Space" width="120" height="80">
+          </button>
+        </a>
+      </div>
+      
+      <div class="gallery">
+        <a target="_blank">
+          <button onclick="buttonImg3()" class="backgroundChoice">
+            <img id="orange" src="/images/bg/farmerBG.png" alt="Orange Man" width="120" height="80">
+          </button>
+        </a>
+      </div>
+      
+      <div class="gallery">
+        <a target="_blank">
+          <button onclick="buttonImg4()" class="backgroundChoice">
+            <img id="sweet" src="/images/bg/bakerBG.png" alt="Festival" width="120" height="80">
+          </button>
+        </a>
+      </div>
+
+        <div style="text-align:end;">
+        <button id="BGconfirmButton" 
+        style="background-color: rgb(54, 54, 233); color:white; outline: none;border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 15px 10px 10px;">설정하기
+        </button>
+        </div>
+      </div>
+    </div>
+      
+      <div id="Paris" class="w3-container city">
+        <h1 style="padding-left:30px; padding-top:20px;">Font</h1>
+        <p style="padding-left:30px;">현재 폰트는 '여기어때 잘난체'입니다.</p>
+        <div class="grid-container2">
           <div class="item1" style="font-family: 'jalnan';">여기어때 잘난체</div>
           <button class="item2" style="background-color:rgb(54, 54, 233); font-size:20px; width:180px; color: white; outline: none; border-radius: 5px;">현재 폰트</button>
           <div class="item3" style="font-family: 'pretendard';">Pretendard</div>  
@@ -101,22 +102,22 @@
         </div>
         <button onclick="reset()" style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 18px 10px 658px;">설정하기
         </button>
-        
-        </div>
       
-        <div id="Tokyo" class="w3-container city">
-         <h1 style="padding-left:30px; padding-top:20px;">Folder Style</h1>
-         <h2 style="padding-left:30px; color: rgb(116, 116, 116);">Color</h2><br>
-         <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
+      </div>
+      
+      <div id="Tokyo" class="w3-container city">
+        <h1 style="padding-left:30px; padding-top:20px;">Folder Style</h1>
+        <h2 style="padding-left:30px; color: rgb(116, 116, 116);">Color</h2><br>
+        <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
           <form action="/action_page.php">
             <input type="color" id="picker" onchange="changename()" id="favcolor" name="favcolor" value="#533CDE" style="width:100px; height: 100px;"><br><br>
           </form>
           <input type="text" id="hex" value="#533CDE" style="width: 200px; height: 70px; font-size: 25px;"><br><br>
-         </div>
+        </div>
 
 
-         <h2 style="padding-left:30px; color:rgb(116, 116, 116);">Icon</h2><br>
-         <div class="grid-container iconBtns"  style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
+        <h2 style="padding-left:30px; color:rgb(116, 116, 116);">Icon</h2><br>
+        <div class="grid-container iconBtns"  style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
           <button class="grid-item iconChoice" id="button-carrot" onclick="change1()">
             <img src="/images/농장주.png">
           </button>
@@ -131,44 +132,36 @@
           </button>
         </div>
         <button id="ColIconconfirmButton" 
-         style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 15px 15px 10px 650px;">설정하기
+          style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 15px 15px 10px 650px;">설정하기
         </button>
-        
-        </div>
-      
-       </div>
       </div>
-
-
-        </div>
-      
-
     </div>
   </div>
+
   <script>
-document.addEventListener("keydown", closeModalOnEsc);
-        function closeModalOnEsc(e) {
+        document.addEventListener("keydown", closeCustomModalOnEsc);
+        function closeCustomModalOnEsc(e) {
             e = e || window.event;
-            const modal = document.getElementById('myModal');
+            const modal = document.getElementById('myCustomModal');
             if (e.key === "Escape" && modal.style.display === "block") {
-                closeModal();
+                closeCUstomModal();
             }
         }
 
-        function openModal() {
-            const modal = document.getElementById('myModal');
-            const modalContent = document.getElementById('modalContent');
+        function openCustomModal() {
+            const modal = document.getElementById('myCustomModal');
+            const customModalContent = document.getElementById('customModalContent');
             modal.style.display = 'block';
 
             // 화면 중앙에 모달창 배치
-            modalContent.style.position = 'fixed';
-            modalContent.style.top = '50%';
-            modalContent.style.left = '50%';
-            modalContent.style.transform = 'translate(-50%, -90%)';
+            customModalContent.style.position = 'fixed';
+            customModalContent.style.top = '50%';
+            customModalContent.style.left = '50%';
+            customModalContent.style.transform = 'translate(-50%, -90%)';
         }
 
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
+        function closeCustomModal() {
+            document.getElementById('myCustomModal').style.display = 'none';
         }
         function dragElement(elmnt) {
             const header = elmnt.querySelector(".custom-header");
@@ -221,7 +214,7 @@ document.addEventListener("keydown", closeModalOnEsc);
         }
 
         // 버튼누르면 배경화면 바뀌도록
-        var bgimage = backgroundImageURL;
+        // var bgimage = backgroundImageURL;
         function buttonImg1() {
           document.getElementById("default").src = "/images/bg/vacationBG.png"
           // bgimage.src="../images/hpBackground.png";
@@ -312,10 +305,10 @@ document.addEventListener("keydown", closeModalOnEsc);
         // let folderURL = "";
         // let folderAddURL = "";
         // let color = "";
-        let backgroundURL = "/images/bg/cyberBG.png";
-        let folderURL = "/images/folderIcon/folder_icon_cyber.png"
-        let folderAddURL = "/images/folderIcon/folder_add_cyber.png";
-        let color = "2B34FD";
+        let backgroundURL = "";
+        let folderURL = ""
+        let folderAddURL = "";
+        let color = "";
         const boxConfirm = document.getElementsByClassName("grid-item");
 
         //배경화면 설정하기 버튼 눌렀을 때

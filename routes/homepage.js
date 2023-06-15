@@ -37,7 +37,16 @@ router.get('/', async function (req, res, next) {
 })
 
 })
+router.post("/save_post", (req, res) => {
+  console.log("save");
 
+  const data = {
+    title: req.body.title,
+    content: req.body.content,
+    tag: req.body.tag,
+  };
+  collectionPost.add(data);
+});
 router.post("/saveCustom", (req, res) => {
   // console.log("save_custom");
   // console.log(req.body.backgroundURL);

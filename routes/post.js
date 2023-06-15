@@ -57,12 +57,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/save_post", (req, res) => {
   console.log("save");
-  // var upload = multer({
-  //   storage: multer.memoryStorage(),
-  //   limits: {
-  //     fileSize: 5 * 1024 * 1024, // 제한 사이즈 설정
-  //   },
-  // });
+
   const data = {
     title: req.body.title,
     content: req.body.content,

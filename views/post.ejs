@@ -1,209 +1,200 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Quill Editor</title>
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/stylesheets/post.css" />
-    <link rel="stylesheet" href="/stylesheets/modal.css" />
-    <script>
-      document.addEventListener("keydown", closeModalOnEsc);
-      function closeModalOnEsc(e) {
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Quill Editor</title>
+  <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/post.css" />
+  <link rel="stylesheet" href="/stylesheets/modal.css" />
+  <script>
+    document.addEventListener("keydown", closeModalOnEsc);
+    function closeModalOnEsc(e) {
+      e = e || window.event;
+      const modal = document.getElementById("myModal");
+      if (e.key === "Escape" && modal.style.display === "block") {
+        closeModal();
+      }
+    }
+
+    function openModal() {
+      const modal = document.getElementById("myModal");
+      const modalContent = document.getElementById("modalContent");
+      modal.style.display = "block";
+
+      // 화면 중앙에 모달창 배치
+      modalContent.style.position = "fixed";
+      modalContent.style.top = "50%";
+      modalContent.style.left = "50%";
+      modalContent.style.transform = "translate(-50%, -90%)";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    function dragElement(elmnt) {
+      const header = elmnt.querySelector(".custom-header");
+      let offsetX, offsetY;
+
+      header.onmousedown = dragMouseDown;
+
+      function dragMouseDown(e) {
         e = e || window.event;
-        const modal = document.getElementById("myModal");
-        if (e.key === "Escape" && modal.style.display === "block") {
-          closeModal();
-        }
+        e.preventDefault();
+        offsetX = e.clientX - elmnt.getBoundingClientRect().left;
+        offsetY = e.clientY - elmnt.getBoundingClientRect().top;
+
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
       }
 
-      function openModal() {
-        const modal = document.getElementById("myModal");
-        const modalContent = document.getElementById("modalContent");
-        modal.style.display = "block";
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
 
-        // 화면 중앙에 모달창 배치
-        modalContent.style.position = "fixed";
-        modalContent.style.top = "50%";
-        modalContent.style.left = "50%";
-        modalContent.style.transform = "translate(-50%, -90%)";
+        elmnt.style.position = "fixed";
+        elmnt.style.left = e.clientX - offsetX + "px";
+        elmnt.style.top = e.clientY - offsetY + "px";
+        elmnt.style.margin = 0; // 이 부분을 추가해주세요
+        elmnt.style.transform = "none"; // 이 부분을 추가해주세요
       }
 
-      function closeModal() {
-        document.getElementById("myModal").style.display = "none";
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
       }
-      function dragElement(elmnt) {
-        const header = elmnt.querySelector(".custom-header");
-        let offsetX, offsetY;
+    }
+  </script>
+</head>
 
-        header.onmousedown = dragMouseDown;
-
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          offsetX = e.clientX - elmnt.getBoundingClientRect().left;
-          offsetY = e.clientY - elmnt.getBoundingClientRect().top;
-
-          document.onmouseup = closeDragElement;
-          document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-
-          elmnt.style.position = "fixed";
-          elmnt.style.left = e.clientX - offsetX + "px";
-          elmnt.style.top = e.clientY - offsetY + "px";
-          elmnt.style.margin = 0; // 이 부분을 추가해주세요
-          elmnt.style.transform = "none"; // 이 부분을 추가해주세요
-        }
-
-        function closeDragElement() {
-          document.onmouseup = null;
-          document.onmousemove = null;
-        }
-      }
-    </script>
-  </head>
-
-  <body>
-    <button
-      onclick="openModal()"
-      style="
+<body>
+  <button onclick="openModal()" style="
         background-color: #fff;
         outline: none;
         border-radius: 2px;
         padding: 12px;
-      "
-    >
-      모달 열기
-    </button>
-    <div id="myModal" class="modal">
-      <div id="modalContent" class="modal-content">
-        <div class="custom-header">
-          <h1>글 작성하기</h1>
-          <span class="close-btn" onclick="closeModal();">&times;</span>
+      ">
+    모달 열기
+  </button>
+  <div id="myModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <div class="custom-header">
+        <h1>글 작성하기</h1>
+        <span class="close-btn" onclick="closeModal();">&times;</span>
+      </div>
+      <div id="modal-quill">
+        <div id="toolbar">
+          <button class="ql-bold quillIcon"></button>
+          <button class="ql-italic quillIcon"></button>
+          <select class="ql-color quillIcon"></select>
+          <button class="ql-underline quillIcon"></button>
+          <button class="ql-strike quillIcon"></button>
+          <button class="ql-header quillIcon"></button>
+          <button class="ql-image quillIcon"></button>
+          <button class="ql-code-block quillIcon"></button>
+          <select class="ql-align quillIcon"></select>
         </div>
-        <div id="modal-quill">
-          <div id="toolbar">
-            <button class="ql-bold quillIcon"></button>
-            <button class="ql-italic quillIcon"></button>
-            <select class="ql-color quillIcon"></select>
-            <button class="ql-underline quillIcon"></button>
-            <button class="ql-strike quillIcon"></button>
-            <button class="ql-header quillIcon"></button>
-            <button class="ql-image quillIcon"></button>
-            <button class="ql-code-block quillIcon"></button>
-            <select class="ql-align quillIcon"></select>
-          </div>
-          <div>
-            <input
-              id="postTitle"
-              type="text"
-              placeholder="제목을 입력해주세요.."
-            />
-          </div>
-          <div id="editor"></div>
+        <div>
+          <input id="postTitle" type="text" placeholder="제목을 입력해주세요.." />
         </div>
+        <div id="editor"></div>
+      </div>
 
-        <div class="modal-footer">
-          <div class="hash-tags-container">
-            <input
-              id="hashTags"
-              type="text"
-              placeholder="해시태그를 입력하세요."
-            />
-            <button id="addTagBtn" onclick="addTag()">추가</button>
-            <div id="tagList"></div>
-          </div>
-          <div>
-            <button id="saveBtn" onclick="">저장</button>
-          </div>
+      <div class="modal-footer">
+        <div class="hash-tags-container">
+          <input id="hashTags" type="text" placeholder="해시태그를 입력하세요." />
+          <button id="addTagBtn" onclick="addTag()">추가</button>
+          <div id="tagList"></div>
+        </div>
+        <div>
+          <button id="saveBtn" onclick="">저장</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="/script/post.js"></script>
+  <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="/script/post.js"></script>
 
-    <script>
-      let quill = new Quill("#editor", {
-        placeholder: "내용을 입력해 주세요!",
-        theme: "snow",
-        modules: {
-          toolbar: {
-            container: "#toolbar",
-            handlers: {
-              image: imageHandler,
-            },
+  <script>
+    let quill = new Quill("#editor", {
+      placeholder: "내용을 입력해 주세요!",
+      theme: "snow",
+      modules: {
+        toolbar: {
+          container: "#toolbar",
+          handlers: {
+            image: imageHandler,
           },
         },
-      });
+      },
+    });
 
-      let tempImages = [];
+    let tempImages = [];
 
-      function dataURLtoBlob(dataurl) {
-        var arr = dataurl.split(","),
-          mime = arr[0].match(/:(.*?);/)[1],
-          bstr = atob(arr[1]),
-          n = bstr.length,
-          u8arr = new Uint8Array(n);
-        while (n--) {
-          u8arr[n] = bstr.charCodeAt(n);
+    function dataURLtoBlob(dataurl) {
+      var arr = dataurl.split(","),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], { type: mime });
+    }
+
+    function imageHandler() {
+      let fileInput = document.createElement("input");
+      fileInput.setAttribute("type", "file");
+      fileInput.setAttribute(
+        "accept",
+        "image/png, image/gif, image/jpeg, image/bmp, image/x-icon"
+      );
+      fileInput.style.display = "none";
+
+      fileInput.addEventListener("change", function () {
+        if (fileInput.files != null && fileInput.files[0] != null) {
+          let reader = new FileReader();
+          reader.onload = function (e) {
+            let range = quill.getSelection(true);
+            quill.insertEmbed(range.index, "image", e.target.result);
+            quill.setSelection(range.index + 1, "silent");
+            tempImages.push(dataURLtoBlob(e.target.result));
+          };
+          reader.readAsDataURL(fileInput.files[0]);
         }
-        return new Blob([u8arr], { type: mime });
-      }
-
-      function imageHandler() {
-        let fileInput = document.createElement("input");
-        fileInput.setAttribute("type", "file");
-        fileInput.setAttribute(
-          "accept",
-          "image/png, image/gif, image/jpeg, image/bmp, image/x-icon"
-        );
-        fileInput.style.display = "none";
-
-        fileInput.addEventListener("change", function () {
-          if (fileInput.files != null && fileInput.files[0] != null) {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-              let range = quill.getSelection(true);
-              quill.insertEmbed(range.index, "image", e.target.result);
-              quill.setSelection(range.index + 1, "silent");
-              tempImages.push(dataURLtoBlob(e.target.result));
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-          }
-          document.body.removeChild(fileInput);
-        });
-        document.body.appendChild(fileInput);
-        fileInput.click();
-      }
-
-      const saveButton = document.getElementById("saveBtn");
-      const postTitle = document.getElementById("postTitle");
-      saveButton.addEventListener("click", async () => {
-        let content = quill.getContents();
-
-        let tag = document.getElementById("tagList");
-        var data = {
-          title: postTitle.innerText,
-          content: content,
-          tag: tag.innerText,
-        };
-        const response2 = await fetch("/p/save_post", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        tempImages = [];
-        alert("post save");
+        document.body.removeChild(fileInput);
       });
-    </script>
-    <script>
-      dragElement(document.getElementById("modalContent"));
-    </script>
-  </body>
+      document.body.appendChild(fileInput);
+      fileInput.click();
+    }
+
+    const saveButton = document.getElementById("saveBtn");
+    const postTitle = document.getElementById("postTitle");
+    saveButton.addEventListener("click", async () => {
+      let content = quill.getContents();
+
+      let tag = document.getElementById("tagList");
+      var data = {
+        title: postTitle.innerText,
+        content: content,
+        tag: tag.innerText,
+      };
+      const response2 = await fetch("/p/save_post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      tempImages = [];
+      alert("post save");
+    });
+  </script>
+  <script>
+    dragElement(document.getElementById("modalContent"));
+  </script>
+</body>
+
 </html>

@@ -1137,6 +1137,7 @@
     const saveButton = document.getElementById("saveBtn");
     const postTitle = document.getElementById("postTitle");
     saveButton.addEventListener("click", async () => {
+      console.log("hi");
       let content = quill2.getContents();
       let tag = document.getElementById("tagList");
       var data = {
@@ -1144,7 +1145,7 @@
         content: content,
         tag: tag.innerText,
       };
-      const response2 = await fetch("/p/save_post", {
+      const response2 = await fetch("/homepage/save_post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

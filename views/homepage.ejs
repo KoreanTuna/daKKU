@@ -10,9 +10,21 @@
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
     <link rel="stylesheet" href="/stylesheets/archive.css" />
     <link rel="stylesheet" href="/stylesheets/archive_modal.css" />
+    <link rel="stylesheet" href="/stylesheets/modal.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      .city {display:none}
+    </style>
+    <script src="/script/style.js"></script>
 
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // customoize 
+        let background = '';
+        let icon = '';
+        let pagecolor = '';
+    </script>
     <script>
       $(document).ready(function() {
       // 초기에 팝업창을 숨김
@@ -146,7 +158,23 @@
           
           file.style.display = 'block';
           fileContent.style.display = 'block';
-      }  
+      } 
+
+      function openCustomModal() {
+              const modal = document.getElementById('myCustomModal');
+              const customModalContent = document.getElementById('customModalContent');
+              modal.style.display = 'block';
+
+              // 화면 중앙에 모달창 배치
+              customModalContent.style.position = 'fixed';
+              customModalContent.style.top = '50%';
+              customModalContent.style.left = '50%';
+              customModalContent.style.transform = 'translate(-50%, -90%)';
+          }
+
+          function closeCustomModal() {
+              document.getElementById('myCustomModal').style.display = 'none';
+          } 
       
 
       function getContentAsDelta(quillInstance) {
@@ -222,15 +250,22 @@
     </script>
   </head>
   <body>
+    <!--상단 툴바-->
     <div id="topbar" class="upside">
-      <div class="left">송민우</div>
+      <div class="left"  onclick="openCustomModal()">송민우</div>
       <div class="right">
-        <div><strong>홈 꾸미기</strong></div>
+        
+        <div onclick="openCustomModal()"><strong>홈 꾸미기</strong></div>
+        
+        <!-- <button onclick="openCustomModal()" style="background-color: rgb(54, 54, 233); color: white; outline: none; border-radius: 5px; padding: 12px;">customize
+        </button> -->
+
         <div><strong>파도타기</strong></div>
         <div>FRI MAR 31</div>
         <div id="currentTime"></div>
       </div>
     </div>
+    <!--바탕화면 그리드(폴더)-->
     <div id="gridContainer" style="flex-direction: column; padding: 1%; margin-top:50px;" class="grid">
       <div id="originalFolder" class="image_text_container">
         <img src="<%= data.folderURL %>" onclick="openModal()" class="folderImage center folder"><h4>Archive 열기</h4>
@@ -238,12 +273,12 @@
       </div>
       
       <!--<div id="folderContainer" style="flex-direction: column;" class=" hidden"></div>-->
-      
+      <!--새폴더-->
       <div id="NewFolderBtn" class="image_text_container">
           <img src= "<%= data.folderAddURL %>" onclick="openNewFolderModal()" class="center folder"><h4>New Archive Folder</h4>
       </div>
     </div>
-
+    <!--폴더 모달창-->
     <div id="myModal" class="modal">
         <div id="modalContent" class="modal-content">
             <div class="custom-header">
@@ -299,6 +334,7 @@
         </div>
     </div>
 
+    <!--뉴 폴더 모달창-->
     <div id="myNewFloderModal" class="modal">
         <div id="newFolderModalContent" class="modal-content" style="background-color: lightsteelblue;">
             <div class="custom-header">
@@ -326,13 +362,14 @@
         </div>
     </div>
 
-    <div class="message-container">
+    <!--쪽지함 아이콘-->
+    <div class="message-container" style = "display: none;">
       <div class ="messageimage-container">
         <div class="message-button"></div>
         <div class="message-text">쪽지함</div>
       </div>
     </div>
-  <!--팝업-->
+  <!--쪽지함 팝업-->
     <div class="popup popup-1">
       <div class="container">
         <div class="box">
@@ -419,42 +456,42 @@
     </div>
 
 
-  <!--팝업2-->
-  <div class="popup popup-2">
-  <div class="container2">
-    <div class="box2">
-      <div class="box-top2">
-        <div class="box-text2">
-          <div>
-            <p>쪽지보내기</p>
-          </div>
-        </div>
-        <div class="box-icons">
-          <!--<div class="edit-icon">Edit</div>-->
-          <div class="x-icon">X</div>
-        </div>
-      </div>
-
-      <!--하단부분-->
-        <div class="box-bottom2">
-          <!-- Dear -->            
-          <div class="mess-container2">
-              <div class="mess-content1D"><p>Dear</p></div>
+    <!--쪽지함 팝업2-->
+    <div class="popup popup-2">
+      <div class="container2">
+        <div class="box2">
+          <div class="box-top2">
+            <div class="box-text2">
+              <div>
+                <p>쪽지보내기</p>
+              </div>
             </div>
-          <div class = "white-box12">
-            <div class = "dear-logo2"></div>
-            <p>MINWOO</p>
-          </div>
-          <div class = "white-box22">
-            <div class = "box2-text" >
-              <p>7주차도 이겨내보자!!<br>화이팅</p>
+            <div class="box-icons">
+              <!--<div class="edit-icon">Edit</div>-->
+              <div class="x-icon">X</div>
             </div>
           </div>
 
-          <div class = "send-button">
-            <p>보내기</p>
+          <!--하단부분-->
+          <div class="box-bottom2">
+            <!-- Dear -->            
+            <div class="mess-container2">
+                <div class="mess-content1D"><p>Dear</p></div>
+            </div>
+            <div class = "white-box12">
+              <div class = "dear-logo2"></div>
+              <p>MINWOO</p>
+            </div>
+            <div class = "white-box22">
+              <div class = "box2-text" >
+                <p>7주차도 이겨내보자!!<br>화이팅</p>
+              </div>
+            </div>
+
+            <div class = "send-button">
+              <p>보내기</p>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
@@ -479,7 +516,7 @@
             <!-- Dear -->            
             <div class="mess-container">
                 <div class="mess-content1D"><p>From</p></div>
-              </div>
+            </div>
             <div class = "white-box1">
               <div class = "dear-logo"></div>
               <p>YB</p>
@@ -487,155 +524,521 @@
             <div class = "white-box2"><p>가오갤 개봉했다는데<br>이번주 금요일 어떻묘?</p>
             </div>
 
-          <!--button-->
-          <div class = "buttons">
-              <div class = "send-button1">
-                  <p>답장</p>
+            <!--button-->
+            <div class = "buttons">
+                <div class = "send-button1">
+                    <p>답장</p>
                 </div>
                 <div class = "send-button2">
                   <p>삭제</p>
                 </div>
-          </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-      <script src="/script/archive1.js"></script>
-  <script>
-      function setContent(content, index) {
-          var quill = new Quill("#editor-"+index, {
-          // placeholder: "내용을 입력해 주세요!",
-          theme: "snow",
-          modules: {
-              toolbar: {
-                  container: "#toolbar",
-              },
-          },
-      });
-          quill.setContents(content);
-      }
-
-       function count_heart() {
-          var num = document.getElementById("heartCount");
-          //("이건 heart: " + num);
-          num.innerText = Number(num.innerText) + 1;
-      }
+    <!-- 커스터 마이징 모달창-->
+    <div id="myCustomModal" class="modal">
+      <div id="customModalContent" class="modal-content2">
+        <div id="modalHeader" class="custom-header">
+            <h1>커스터마이즈</h1>
+            <span class="close-btn" onclick="closeCustomModal();">&times;</span>
+        </div>
   
-  </script>
-  <script>
-      dragElement(document.getElementById("modalContent"));
-  </script>
-  <script>
-      function handleSelectChange() {
-      var selectedValue = document.getElementById("mySelect").value;
-          // 선택된 값에 대한 처리 로직을 작성합니다.
-          console.log("Selected value: " + selectedValue);
-      }
-
-      function handleListItemClick(item) {
-          // 선택된 항목에 대한 처리 로직을 작성합니다.
-          console.log("Clicked item: " + item);
-      }
-  </script>
-  <script>
-      function addNewFolder() {
-      // 새로운 폴더 이름 가져오기
-      var newFolderName = document.getElementById("newFolderName").value;
-      // 새로운 폴더를 생성하여 HTML에 추가
-      var newFolder = document.createElement("div");
-      //newFolder.classList.add("grid");
-      newFolder.style="padding: 1%";
-
-      var ImageTextContainer = document.createElement("div");
-      ImageTextContainer.classList.add("image_text_container");
-      
-      var folderImage = document.createElement("img");
-      folderURL = "<%= data.folderURL %>";
-      folderImage.src = folderURL;
-      
-      folderImage.onclick = openModal;
-      folderImage.className = "folderImage center folder";
-      folderImage.style = "text-align: center; color:white;";
-
-      
-
-      var folderName = document.createElement("h4");
-      if(newFolderName){
-          folderName.innerText = newFolderName;
-      }else{
-          folderName.innerText = "새폴더";
-      }
-      console.log("folderURL:",folderURL);
-      if(folderURL == "/images/folderIcon/folder_add_cyber.png")
-      {
-        folderName.style.color = "white";
-      }
-
-      ImageTextContainer.appendChild(folderImage);
-      ImageTextContainer.appendChild(folderName);
-
-      newFolder.appendChild(ImageTextContainer);
-
-      //var folderContainer = document.getElementById("folderContainer");
-      
-      var folderContainer = document.createElement("div");
-      folderContainer.append(newFolder);
-      var NewFolderBtn = document.getElementById("NewFolderBtn");        
-      var gridContainer = document.getElementById("gridContainer");
-
-      var childNodes = gridContainer.childNodes;
-
-      gridContainer.insertBefore(folderContainer,NewFolderBtn);
-      
-      //folderContainer.appendChild(newFolder);
-      folderContainer.style="padding: 1%";
-
-      // 입력 필드 초기화
-      document.getElementById("newFolderName").value = "";
   
-      // 창 끄기
-      document.getElementById("myNewFloderModal").style.display = 'none';
-      folderContainer.style.display = 'block';     
-  }
-  </script>
+        <div class="w3-bar w3-border-bottom" style="padding:20px;">
+          <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">Background</button>
+          <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">Font</button>
+          <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Tokyo')">Folder Style</button>
+        </div>
+        
+        <div id="London" class="w3-container city">
+          <h1 style="padding-left:30px; padding-top:20px;">Background</h1>
+          <p style="padding-left:30px;">배경화면을 선택해주세요.</p>
+          <img id="default" src="/images/bg/vacationBG.png" style="width: 400px; padding: 20px 30px 20px 30px;">
+  
+          <div style="padding-left: 25px;">
+          <div class="gallery">
+          <a target="_blank">
+            <button onclick="buttonImg1()" class="backgroundChoice">
+              <img id="hp" src="/images/bg/vacationBG.png" alt="Default" width="120" height="80">
+            </button>
+          </a>
+        </div>
+        
+        <div class="gallery">
+          <a target="_blank">
+            <button onclick="buttonImg2()" class="backgroundChoice">
+              <img id="space" src="/images/bg/cyberBG.png" alt="Space" width="120" height="80">
+            </button>
+          </a>
+        </div>
+        
+        <div class="gallery">
+          <a target="_blank">
+            <button onclick="buttonImg3()" class="backgroundChoice">
+              <img id="orange" src="/images/bg/farmerBG.png" alt="Orange Man" width="120" height="80">
+            </button>
+          </a>
+        </div>
+        
+        <div class="gallery">
+          <a target="_blank">
+            <button onclick="buttonImg4()" class="backgroundChoice">
+              <img id="sweet" src="/images/bg/bakerBG.png" alt="Festival" width="120" height="80">
+            </button>
+          </a>
+        </div>
+  
+          <div style="text-align:end;">
+          <button id="BGconfirmButton" 
+          style="background-color: rgb(54, 54, 233); color:white; outline: none;border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 15px 10px 10px;">설정하기
+          </button>
+          </div>
+        </div>
+      </div>
+        
+        <div id="Paris" class="w3-container city">
+          <h1 style="padding-left:30px; padding-top:20px;">Font</h1>
+          <p style="padding-left:30px;">현재 폰트는 '여기어때 잘난체'입니다.</p>
+          <div class="grid-container2">
+            <div class="item1" style="font-family: 'jalnan';">여기어때 잘난체</div>
+            <button class="item2" style="background-color:rgb(54, 54, 233); font-size:20px; width:180px; color: white; outline: none; border-radius: 5px;">현재 폰트</button>
+            <div class="item3" style="font-family: 'pretendard';">Pretendard</div>  
+            <button class="item4" style="font-size:20px; width:180px; outline: none; border-radius: 5px;">선택하기</button>
+            <div class="item5" style="font: gothic;">나눔고딕</div>
+            <button class="item6" style="font-size:20px; width:180px; outline: none; border-radius: 5px;">선택하기</button>
+            <div class="item7" style="font: 배민 한나 pro;">배민 한나 pro</div>
+            <button class="item8" style="font-size:20px; width:180px; outline: none; border-radius: 5px;">선택하기</button>
+            <div class="item9" style="font: Noto Sans;">Noto Sans</div>  
+            <button class="item10" style="font-size:20px; width:180px; outline: none; border-radius: 5px;">선택하기</button>
+          </div>
+          <button onclick="reset()" style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 40px 18px 10px 658px;">설정하기
+          </button>
+        
+        </div>
+        
+        <div id="Tokyo" class="w3-container city">
+          <h1 style="padding-left:30px; padding-top:20px;">Folder Style</h1>
+          <h2 style="padding-left:30px; color: rgb(116, 116, 116);">Color</h2><br>
+          <div class="grid-container" style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
+            <form action="/action_page.php">
+              <input type="color" id="picker" onchange="changename()" id="favcolor" name="favcolor" value="#533CDE" style="width:100px; height: 100px;"><br><br>
+            </form>
+            <input type="text" id="hex" value="#533CDE" style="width: 200px; height: 70px; font-size: 25px;"><br><br>
+          </div>
+  
+  
+          <h2 style="padding-left:30px; color:rgb(116, 116, 116);">Icon</h2><br>
+          <div class="grid-container iconBtns"  style="grid-gap:30px; display: flex; flex-direction: row; padding-left:30px;">
+            <button class="grid-item iconChoice" id="button-carrot" onclick="change1()">
+              <img src="/images/농장주.png">
+            </button>
+            <button class="grid-item iconChoice" id="button-cyber" onclick="change2()">
+              <img src="/images/사이버.png">
+            </button>
+            <button class="grid-item iconChoice" id="button-vacation" onclick="change3()">
+              <img src="/images/방학.png">
+            </button>  
+            <button class="grid-item iconChoice" id="button-baker" onclick="change4()">
+              <img src="/images/베이커.png">
+            </button>
+          </div>
+          <button id="ColIconconfirmButton" 
+            style="background-color: rgb(54, 54, 233); color:white; outline: none; position:absolute; border-radius: 5px; padding: 12px 20px 12px 20px; margin: 15px 15px 10px 650px;">설정하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="/script/archive1.js"></script>
     <script>
-    let backgroundURL = '<%= data.backgroundURL %>';
-    let folderURL = '<%= data.folderURL %>';
-    let folderAddURL = '<%= data.folderAddURL %>';
-    let color = '<%= data.color %>';
+        function setContent(content, index) {
+            var quill = new Quill("#editor-"+index, {
+            // placeholder: "내용을 입력해 주세요!",
+            theme: "snow",
+            modules: {
+                toolbar: {
+                    container: "#toolbar",
+                },
+            },
+        });
+            quill.setContents(content);
+        }
 
-    const NewFolderBtn = document.getElementById("NewFolderBtn");
-    const originalFolder = document.getElementById("originalFolder")
-    const text = NewFolderBtn.querySelector("h4");
-    const text2 = originalFolder.querySelector("h4");
+        function count_heart() {
+            var num = document.getElementById("heartCount");
+            //("이건 heart: " + num);
+            num.innerText = Number(num.innerText) + 1;
+        }
+    
+    </script>
+    <script>
+        dragElement(document.getElementById("modalContent"));
+    </script>
+    <script>
+        function handleSelectChange() {
+        var selectedValue = document.getElementById("mySelect").value;
+            // 선택된 값에 대한 처리 로직을 작성합니다.
+            //console.log("Selected value: " + selectedValue);
+        }
 
-    if(color == "2B34FD"){
-      text.style.color = "white";
-      text2.style.color = "white";
-    }else{
-      text.style.color = "black";
-      text2.style.color = "black";
-    }
+        function handleListItemClick(item) {
+            // 선택된 항목에 대한 처리 로직을 작성합니다.
+            //console.log("Clicked item: " + item);
+        }
+    </script>
+    <script>
+        function addNewFolder() {
+          // 새로운 폴더 이름 가져오기
+          var newFolderName = document.getElementById("newFolderName").value;
+          // 새로운 폴더를 생성하여 HTML에 추가
+          var newFolder = document.createElement("div");
+          //newFolder.classList.add("grid");
+          newFolder.style="padding: 1%";
 
-    const body = document.getElementsByTagName("body")[0];
-    //const addFolder = document.getElementById("addFolder");
-    //const addFolder = document.getElementById("newFolderImage");
-    //const folderImage = document.getElementsByClassName("folderImage");
-    const topbar = document.getElementById("topbar");
-    document.addEventListener('DOMContentLoaded', function () {
-      body.style.backgroundImage = `url(${backgroundURL})`;
-      body.style.backgroundSize = "cover";
-      body.style.backgroundPosition = "center top";
-      //addFolder.src= `url(${folderAddURL})`;
-      topbar.style.backgroundColor = `#${color}`;
-      body.style.backgroundColor = `#${color}`;
-      // for (let i = 0; i < folderImage.length; i++) {
-      //   folderImage[i].src = `url(${folderURL})`;
-      //   folderImage[i].src
-      // }
-    });
-  </script>
+          var ImageTextContainer = document.createElement("div");
+          ImageTextContainer.classList.add("image_text_container");
+          
+          var folderImage = document.createElement("img");
+          folderURL = "<%= data.folderURL %>";
+          folderImage.src = folderURL;
+          
+          folderImage.onclick = openModal;
+          folderImage.className = "folderImage center folder";
+          folderImage.style = "text-align: center; color:white;";
+
+          
+
+          var folderName = document.createElement("h4");
+          if(newFolderName){
+              folderName.innerText = newFolderName;
+          }else{
+              folderName.innerText = "새폴더";
+          }
+          if(backgroundURL == "/images/bg/cyberBG.png")
+          {
+            folderName.style.color = "white";
+          }
+
+          ImageTextContainer.appendChild(folderImage);
+          ImageTextContainer.appendChild(folderName);
+
+          newFolder.appendChild(ImageTextContainer);
+
+          //var folderContainer = document.getElementById("folderContainer");
+          
+          var folderContainer = document.createElement("div");
+          folderContainer.append(newFolder);
+          var NewFolderBtn = document.getElementById("NewFolderBtn");        
+          var gridContainer = document.getElementById("gridContainer");
+
+          var childNodes = gridContainer.childNodes;
+
+          gridContainer.insertBefore(folderContainer,NewFolderBtn);
+          
+          //folderContainer.appendChild(newFolder);
+          folderContainer.style="padding: 1%";
+
+          // 입력 필드 초기화
+          document.getElementById("newFolderName").value = "";
+      
+          // 창 끄기
+          document.getElementById("myNewFloderModal").style.display = 'none';
+          folderContainer.style.display = 'block';     
+        }
+    </script>
+    <script>
+        let backgroundURL = '<%= data.backgroundURL %>';
+        let folderURL = '<%= data.folderURL %>';
+        let folderAddURL = '<%= data.folderAddURL %>';
+        let color = '<%= data.color %>';
+
+        const NewFolderBtn = document.getElementById("NewFolderBtn");
+        const originalFolder = document.getElementById("originalFolder")
+        const text = NewFolderBtn.querySelector("h4");
+        const text2 = originalFolder.querySelector("h4");
+
+        if(color == "2B34FD"){
+          text.style.color = "white";
+          text2.style.color = "white";
+        }else{
+          text.style.color = "black";
+          text2.style.color = "black";
+        }
+
+        const body = document.getElementsByTagName("body")[0];
+        //const addFolder = document.getElementById("addFolder");
+        //const addFolder = document.getElementById("newFolderImage");
+        //const folderImage = document.getElementsByClassName("folderImage");
+        const topbar = document.getElementById("topbar");
+        document.addEventListener('DOMContentLoaded', function () {
+          body.style.backgroundImage = `url(${backgroundURL})`;
+          body.style.backgroundSize = "cover";
+          body.style.backgroundPosition = "center top";
+          //addFolder.src= `url(${folderAddURL})`;
+          topbar.style.backgroundColor = `#${color}`;
+          body.style.backgroundColor = `#${color}`;
+          // for (let i = 0; i < folderImage.length; i++) {
+          //   folderImage[i].src = `url(${folderURL})`;
+          //   folderImage[i].src
+          // }
+        });
+    </script>
+
+    <!--Customoize-->
+    <script>
+      document.addEventListener("keydown", closeCustomModalOnEsc);
+      function closeCustomModalOnEsc(e) {
+          e = e || window.event;
+          const modal = document.getElementById('myCustomModal');
+          if (e.key === "Escape" && modal.style.display === "block") {
+              closeModal();
+          }
+      }    
+      // document.getElementsByClassName("tablink")[0].click();
+
+      function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].classList.remove("w3-light-grey");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("w3-light-grey");
+      }
+
+      // 버튼누르면 배경화면 바뀌도록
+      //var bgimage = backgroundImageURL;
+      function buttonImg1() {
+        document.getElementById("default").src = "/images/bg/vacationBG.png"
+        // bgimage.src="../images/hpBackground.png";
+        background = "방학";
+        //console.log(background);
+      }
+      function buttonImg2() {
+        document.getElementById("default").src = "/images/bg/cyberBG.png"
+        // bgimage.src="../images/space.png";
+        background = "사이버";
+      }
+      function buttonImg3() {
+        document.getElementById("default").src = "/images/bg/farmerBG.png"
+        // bgimage.src="../images/orange.png";
+        background = "농장주";
+      }
+      function buttonImg4() {
+        document.getElementById("default").src = "/images/bg/bakerBG.png"
+        // bgimage.src="../images/Sweet House Festival 1.png";
+        background = "베이커";
+      }
+
+      // 아이콘 버튼누르면 폴더스타일 지정했다는 표시
+      function change1() {
+        icon = "농장주";
+        var select = document.getElementById("button-carrot");
+        select.style.border="3px solid red"
+        var another1 = document.getElementById("button-cyber");
+        another1.style.border="1px solid gray"
+        var another2 = document.getElementById("button-vacation");
+        another2.style.border="1px solid gray"
+        var another3 = document.getElementById("button-baker");
+        another3.style.border="1px solid gray"
+      }
+      function change2() {
+        icon = "사이버";
+        var select = document.getElementById("button-cyber");
+        select.style.border="3px solid red"
+        var another1 = document.getElementById("button-carrot");
+        another1.style.border="1px solid gray"
+        var another2 = document.getElementById("button-vacation");
+        another2.style.border="1px solid gray"
+        var another3 = document.getElementById("button-baker");
+        another3.style.border="1px solid gray"
+      }
+      function change3() {
+        icon = "방학";
+        var select = document.getElementById("button-vacation");
+        select.style.border="3px solid red"
+        var another1 = document.getElementById("button-carrot");
+        another1.style.border="1px solid gray"
+        var another2 = document.getElementById("button-cyber");
+        another2.style.border="1px solid gray"
+        var another3 = document.getElementById("button-baker");
+        another3.style.border="1px solid gray"
+      }
+      function change4() {
+        icon = "베이커";
+        var select = document.getElementById("button-baker");
+        select.style.border="3px solid red"
+        var another1 = document.getElementById("button-carrot");
+        another1.style.border="1px solid gray"
+        var another2 = document.getElementById("button-cyber");
+        another2.style.border="1px solid gray"
+        var another3 = document.getElementById("button-vacation");
+        another3.style.border="1px solid gray"
+      }
+      function reset() {
+        var another4 = document.getElementById("button-baker");
+        another4.style.border="1px solid gray"
+        var another1 = document.getElementById("button-carrot");
+        another1.style.border="1px solid gray"
+        var another2 = document.getElementById("button-cyber");
+        another2.style.border="1px solid gray"
+        var another3 = document.getElementById("button-vacation");
+        another3.style.border="1px solid gray"
+      }
+
+      // 바뀐 색상 hex로 나타내기
+      function changename() {
+        var choose = document.getElementById("picker");
+        var result = document.getElementById("hex");
+        result.value = choose.value;
+        pagecolor = result.value;
+      }
+      
+      const boxConfirm = document.getElementsByClassName("grid-item");
+
+      //배경화면 설정하기 버튼 눌렀을 때
+      const backgroundBtns = document.getElementsByClassName('backgroundChoice');
+      const backgroundChange = background;
+      const colorBtn = document.getElementsByClassName('colorChoice');
+      const colorChange = pagecolor;
+      const iconBtns = document.getElementsByClassName('iconChoice');
+      const iconChange = icon;
+
+      for (var i = 0; i < backgroundBtns.length; i++) {
+          (function (index) {
+              backgroundBtns[index].addEventListener("click", function () {
+                  switch (background) {
+                      case "사이버":
+              
+                          backgroundURL = "/images/bg/cyberBG.png";
+                          //folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                          //folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                          color = "2B34FD";
+                          break;
+                      case "농장주":
+                          backgroundURL = "/images/bg/farmerBG.png";
+                          //folderURL = "/images/folderIcon/folder_icon_farmer.png"
+                          //folderAddURL = "/images/folderIcon/folder_add_farmer.png";
+                          color = "A24C1F";
+                          break;
+                      case "베이커":
+                          backgroundURL = "/images/bg/bakerBG.png";
+                          //folderURL = "/images/folderIcon/folder_icon_baker.png"
+                          //folderAddURL = "/images/folderIcon/folder_add_baker.png";
+                          color = "E13A8A";
+                          break;
+                      case "방학":
+                          backgroundURL = "/images/bg/vacationBG.png";
+                          //folderURL = "/images/folderIcon/folder_icon_vacation.png"
+                          //folderAddURL = "/images/folderIcon/folder_add_vacation.png";
+                          color = "533CDE";
+                          break;
+
+                      default:
+                          backgroundURL = "/images/bg/cyberBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                          folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                          color = "2B34FD";
+                          break;
+                  }
+              })
+          })(i);
+      }
+
+      const BGconfirmButton = document.getElementById("BGconfirmButton");
+      BGconfirmButton.addEventListener("click", async () => {
+        
+
+        // console.log(backgroundURL);
+        // console.log(folderURL);
+        // console.log(folderAddURL);
+        // console.log(color);
+    
+          let data = {
+              backgroundURL: backgroundURL,
+              folderAddURL: folderAddURL,
+              folderURL: folderURL,
+              color: color,
+          };
+          const response = await fetch("/customize/saveCustom", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+          });
+          window.location.href = "/homepage";
+      });
+
+     
+      //색상과 아이콘 설정하기 눌렀을 때
+      for (var i = 0; i < iconBtns.length; i++) {
+          (function (index) {
+              iconBtns[index].addEventListener("click", function () {
+                  switch (icon) {
+                      case "사이버":
+                          //backgroundURL = "/images/bg/cyberBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                          folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                          // color = "2B34FD";
+                          break;
+                      case "농장주":
+                          //backgroundURL = "/images/bg/farmerBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_farmer.png"
+                          folderAddURL = "/images/folderIcon/folder_add_farmer.png";
+                          // color = "A24C1F";
+                          break;
+                      case "베이커":
+                          //backgroundURL = "/images/bg/bakerBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_baker.png"
+                          folderAddURL = "/images/folderIcon/folder_add_baker.png";
+                          // color = "E13A8A";
+                          break;
+                      case "방학":
+                          //backgroundURL = "/images/bg/vacationBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_vacation.png"
+                          folderAddURL = "/images/folderIcon/folder_add_vacation.png";
+                          // color = "533CDE";
+                          break;
+
+                      default:
+                          backgroundURL = "/images/bg/cyberBG.png";
+                          folderURL = "/images/folderIcon/folder_icon_cyber.png"
+                          folderAddURL = "/images/folderIcon/folder_add_cyber.png";
+                          color = "2B34FD";
+                          break;
+                  }
+              })
+          })(i);
+      }
+
+      const ColIconconfirmButton = document.getElementById("ColIconconfirmButton");
+      ColIconconfirmButton.addEventListener("click", async () => {
+
+          let data = {
+              backgroundURL: backgroundURL,
+              folderAddURL: folderAddURL,
+              folderURL: folderURL,
+              color: color,
+          };
+          const response = await fetch("/customize/saveCustom", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+          });
+
+          window.location.href = "/homepage";
+      });
+    </script>
   </body>
 </html>
